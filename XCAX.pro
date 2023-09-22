@@ -17,7 +17,7 @@ HEADERS += \
 
 FORMS += \
     mainwindow.ui
-
+CASROOT = F:/OpenCASCADE-7.7.0-vc14-64/opencascade-7.7.0
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin

@@ -1,13 +1,10 @@
-
-#include "mainwindow.h"
-
-#include <QApplication>
-
+#include "XCAX.h"
+#include <QtWidgets/QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
+    XCAX w;
     w.show();
     return a.exec();
 }

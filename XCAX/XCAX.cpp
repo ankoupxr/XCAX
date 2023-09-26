@@ -40,6 +40,19 @@ void XCAX::InitMenu()
 	QAction* readerSTLMenu = fileMenu->addAction(QString::fromLocal8Bit("导入STL"));
 	QAction* readerOBJMenu = fileMenu->addAction(QString::fromLocal8Bit("导入OBJ"));
 
+	QMenu* modelingMenu = bar->addMenu(QString::fromLocal8Bit("造型"));
+	QAction* BooleanMenu = modelingMenu->addAction(QString::fromLocal8Bit("布尔运算"));
+	QAction* FilletConstructorMenu = modelingMenu->addAction(QString::fromLocal8Bit("倒圆"));
+	QAction* ChamferConstructorMenu = modelingMenu->addAction(QString::fromLocal8Bit("倒角"));
+
+	QMenu* renderMenu = bar->addMenu(QString::fromLocal8Bit("渲染"));
+	
+	QMenu* viewMenu = bar->addMenu(QString::fromLocal8Bit("视图"));
+
+	QMenu* toolMenu = bar->addMenu(QString::fromLocal8Bit("工具"));
+
+	QMenu* helpMenu = bar->addMenu(QString::fromLocal8Bit("帮助"));
+
 	connect(readerSTPMenu, &QAction::triggered, this, [=]() {
 		//shapes = XStepReader::ReadStep();
 
@@ -88,16 +101,4 @@ void XCAX::InitMenu()
 		// 添加演员
 		renderer->AddActor(actor);
 	});
-
-	//创建工具栏
-	QToolBar* tool = new QToolBar(this);
-	this->addToolBar(tool);//构建工具栏
-	QAction* tool1 = new QAction(QString::fromLocal8Bit("新建"));//构建工具栏选项
-	QAction* tool2 = new QAction(QString::fromLocal8Bit("打开"));
-	QAction* tool3 = new QAction(QString::fromLocal8Bit("保存"));
-	QAction* tool4 = new QAction(QString::fromLocal8Bit("退出"));
-	tool->addAction(tool1);//将工具栏选项添加到工具栏
-	tool->addAction(tool2);
-	tool->addAction(tool3);
-	tool->addAction(tool4);
 }

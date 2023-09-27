@@ -1,14 +1,14 @@
 #pragma once
 
-#include <STEPControl_Reader.hxx>
+#include <STEPCAFControl_Reader.hxx>
 #include <TopTools_HSequenceOfShape.hxx>
 #include <QFileDialog>
 #include <QString>
 
-class XStepReader
+class XStepRW
 {
 public:
-	static Handle(TopTools_HSequenceOfShape) XStepReader::ReadStep();
+	static TopoDS_Shape readFiles(const std::string filepath);
 
 private:
 

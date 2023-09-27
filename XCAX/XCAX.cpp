@@ -9,7 +9,7 @@ XCAX::XCAX(QWidget *parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
-
+	this->setWindowIcon(QIcon(":/images/windowIcon.jpg"));
 	//创建菜单
 	InitMenu();
 
@@ -23,8 +23,10 @@ XCAX::XCAX(QWidget *parent)
 
 	//将渲染器加入到VTK窗口中。可以先写这一行，后续再将准备好的vtkRenderer加入到renderWindow中也是可以同步数据的
 	qvtkWidget->setRenderWindow(renderWindow);
-	//this->setCentralWidget(qvtkWidget);
-	ui.vtlayout->addWidget(qvtkWidget);
+	this->setCentralWidget(qvtkWidget);
+	//ui.vtlayout->addWidget(qvtkWidget);
+
+	connect(this, SIGNAL(resized()), this, SLOT(OnResized()));
 }
 
 XCAX::~XCAX()
@@ -40,50 +42,31 @@ void XCAX::InitMenu()
 	QAction* readerSTLMenu = fileMenu->addAction(QString::fromLocal8Bit("导入STL"));
 	QAction* readerOBJMenu = fileMenu->addAction(QString::fromLocal8Bit("导入OBJ"));
 
-	QMenu* modelingMenu = bar->addMenu(QString::fromLocal8Bit("造型"));
-	QAction* BooleanMenu = modelingMenu->addAction(QString::fromLocal8Bit("布尔运算"));
+	QMenu* modelingMenu = bar->addMenu(QString::fromLocal8Bit("实体"));
 	QAction* FilletConstructorMenu = modelingMenu->addAction(QString::fromLocal8Bit("倒圆"));
 	QAction* ChamferConstructorMenu = modelingMenu->addAction(QString::fromLocal8Bit("倒角"));
+	QAction* ShellMenu = modelingMenu->addAction(QString::fromLocal8Bit("薄壳"));
+	QAction* ThickeningMenu = modelingMenu->addAction(QString::fromLocal8Bit("加厚"));
+	QAction* TorsionMenu = modelingMenu->addAction(QString::fromLocal8Bit("扭转"));
 
-	QMenu* renderMenu = bar->addMenu(QString::fromLocal8Bit("渲染"));
+	QMenu* meshMenu = bar->addMenu(QString::fromLocal8Bit("网格"));
+	QAction* FillHoleMenu = meshMenu->addAction(QString::fromLocal8Bit("补孔"));
+	QAction* SimpleMenu = meshMenu->addAction(QString::fromLocal8Bit("简化"));
 	
-	QMenu* viewMenu = bar->addMenu(QString::fromLocal8Bit("视图"));
+	QMenu* surfaceMenu = bar->addMenu(QString::fromLocal8Bit("曲面"));
+	QAction* SufaceFilletConstructorMenu = surfaceMenu->addAction(QString::fromLocal8Bit("倒圆"));
+	QAction* SufaceChamferConstructorMenu = surfaceMenu->addAction(QString::fromLocal8Bit("倒角"));
+	QAction* SufaceThickeningMenu = surfaceMenu->addAction(QString::fromLocal8Bit("加厚"));
+	QAction* SufaceTorsionMenu = surfaceMenu->addAction(QString::fromLocal8Bit("扭转"));
 
 	QMenu* toolMenu = bar->addMenu(QString::fromLocal8Bit("工具"));
 
 	QMenu* helpMenu = bar->addMenu(QString::fromLocal8Bit("帮助"));
 
 	connect(readerSTPMenu, &QAction::triggered, this, [=]() {
-		//shapes = XStepReader::ReadStep();
-
-
-		//for (int i = 0; i < shapes->Length(); i++)
-		//{
-		//	vtkNew<IVtkTools_ShapeDataSource> occSource; //创建一个可以被VTK使用的OCC数据源
-		//	occSource->SetShape(new IVtkOCC_Shape(shapes->Value(i))); //将shape添加到数据源中
-
-		//	// 映射、制图人
-		//	vtkSmartPointer<vtkOpenGLPolyDataMapper> mapper =
-		//		vtkSmartPointer<vtkOpenGLPolyDataMapper>::New();
-		//	mapper->SetInputConnection(occSource->GetOutputPort());    // 设置映射的渲染数据
-
-		//	// 演员
-		//	vtkSmartPointer<vtkActor> actor =
-		//		vtkSmartPointer<vtkActor>::New();
-		//	actor->SetMapper(mapper);
-
-
-		//	// 添加演员
-		//	renderer->AddActor(actor);
-		//}
-
-		BRepPrimAPI_MakeBox box(2, 2, 2);
-		const TopoDS_Shape& shape1 = box.Shape();
-
-		BRepPrimAPI_MakeSphere box2(2);
-		const TopoDS_Shape& shape2 = box2.Shape();
-
-		TopoDS_Shape shape = BRepAlgoAPI_Cut(shape1, shape2);
+		QString filename = QFileDialog::getOpenFileName(nullptr, QObject::tr("read a stp file"),
+			"E:", QObject::tr("STEP Files(*.stp *.step)"));
+		auto shape = XStepRW::readFiles(filename.toStdString());
 
 		vtkNew<IVtkTools_ShapeDataSource> occSource; //创建一个可以被VTK使用的OCC数据源
 		occSource->SetShape(new IVtkOCC_Shape(shape)); //将shape添加到数据源中
@@ -101,4 +84,41 @@ void XCAX::InitMenu()
 		// 添加演员
 		renderer->AddActor(actor);
 	});
+
+
+	QToolBar* tool = new QToolBar(this);
+	this->addToolBar(tool);//构建工具栏
+	QAction* tool1 = new QAction(QString::fromLocal8Bit("打开"));
+	QAction* tool2 = new QAction(QString::fromLocal8Bit("导出"));
+	QAction* tool3 = new QAction(QString::fromLocal8Bit("后"));
+	QAction* tool4 = new QAction(QString::fromLocal8Bit("下"));
+	QAction* tool5 = new QAction(QString::fromLocal8Bit("前"));
+	QAction* tool6 = new QAction(QString::fromLocal8Bit("左"));
+	QAction* tool7 = new QAction(QString::fromLocal8Bit("右"));
+	QAction* tool8 = new QAction(QString::fromLocal8Bit("上"));
+	QAction* tool9 = new QAction(QString::fromLocal8Bit("原来"));
+	tool1->setIcon(QIcon(":/images/file.svg"));
+	tool2->setIcon(QIcon(":/images/export.svg"));
+	tool3->setIcon(QIcon(":/images/view-back.svg"));
+	tool4->setIcon(QIcon(":/images/view-bottom.svg"));
+	tool5->setIcon(QIcon(":/images/view-front.svg"));
+	tool6->setIcon(QIcon(":/images/view-left.svg"));
+	tool7->setIcon(QIcon(":/images/view-right.svg"));
+	tool8->setIcon(QIcon(":/images/view-top.svg"));
+	tool9->setIcon(QIcon(":/images/view-iso.svg"));
+	tool->addAction(tool1);
+	tool->addAction(tool2);
+	tool->addAction(tool3);
+	tool->addAction(tool4);
+	tool->addAction(tool5);
+	tool->addAction(tool6);
+	tool->addAction(tool7);
+	tool->addAction(tool8);
+	tool->addAction(tool9);
+	
+}
+
+void XCAX::OnResized() 
+{
+	
 }

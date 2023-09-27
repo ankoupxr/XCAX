@@ -14,7 +14,7 @@
 #include <vtkRenderer.h>
 #include <vtkRenderWindowInteractor.h>
 
-#include "IO/XStepReader.h"
+#include "XStepRW.h"
 
 class XCAX : public QMainWindow
 {
@@ -23,7 +23,7 @@ class XCAX : public QMainWindow
 public:
     XCAX(QWidget *parent = nullptr);
     ~XCAX();
-
+    void OnResized();
     void InitMenu();
 
 private:
@@ -32,6 +32,4 @@ private:
     QVTKOpenGLNativeWidget* qvtkWidget;
     vtkSmartPointer<vtkGenericOpenGLRenderWindow> renderWindow;
     vtkSmartPointer<vtkRenderer> renderer;
-
-    Handle(TopTools_HSequenceOfShape) shapes;
 };

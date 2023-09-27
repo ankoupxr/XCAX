@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/export.svg</file>
+        <file>images/file.svg</file>
+        <file>images/view-back.svg</file>
+        <file>images/view-bottom.svg</file>
+        <file>images/view-front.svg</file>
+        <file>images/view-iso.svg</file>
+        <file>images/view-left.svg</file>
+        <file>images/view-right.svg</file>
+        <file>images/view-top.svg</file>
+        <file>images/windowIcon.jpg</file>
+    </qresource>
+</RCC>

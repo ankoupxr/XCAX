@@ -35,24 +35,46 @@
     <ClCompile Include="XCAX.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <QtRcc Include="Resource.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="IO\XStepReader.cpp">
+    <ClCompile Include="IO\XStepRW.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="IO\XStlRW.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ModelTreeWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="IO\XStepReader.h">
+    <ClInclude Include="IO\XStepRW.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="IO\XStlRW.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="IO\XRW.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IO\XCafRW.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ModelTreeWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="ModelTreeWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
 </Project>

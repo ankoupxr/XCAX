@@ -25,8 +25,6 @@ XCAX::XCAX(QWidget *parent)
 	qvtkWidget->setRenderWindow(renderWindow);
 	this->setCentralWidget(qvtkWidget);
 	//ui.vtlayout->addWidget(qvtkWidget);
-
-	connect(this, SIGNAL(resized()), this, SLOT(OnResized()));
 }
 
 XCAX::~XCAX()
@@ -41,51 +39,22 @@ void XCAX::InitMenu()
 	QAction* readerSTPMenu = fileMenu->addAction(QString::fromLocal8Bit("导入STEP"));
 	QAction* readerSTLMenu = fileMenu->addAction(QString::fromLocal8Bit("导入STL"));
 	QAction* readerOBJMenu = fileMenu->addAction(QString::fromLocal8Bit("导入OBJ"));
-
 	QMenu* modelingMenu = bar->addMenu(QString::fromLocal8Bit("实体"));
 	QAction* FilletConstructorMenu = modelingMenu->addAction(QString::fromLocal8Bit("倒圆"));
 	QAction* ChamferConstructorMenu = modelingMenu->addAction(QString::fromLocal8Bit("倒角"));
 	QAction* ShellMenu = modelingMenu->addAction(QString::fromLocal8Bit("薄壳"));
 	QAction* ThickeningMenu = modelingMenu->addAction(QString::fromLocal8Bit("加厚"));
 	QAction* TorsionMenu = modelingMenu->addAction(QString::fromLocal8Bit("扭转"));
-
 	QMenu* meshMenu = bar->addMenu(QString::fromLocal8Bit("网格"));
 	QAction* FillHoleMenu = meshMenu->addAction(QString::fromLocal8Bit("补孔"));
 	QAction* SimpleMenu = meshMenu->addAction(QString::fromLocal8Bit("简化"));
-	
 	QMenu* surfaceMenu = bar->addMenu(QString::fromLocal8Bit("曲面"));
 	QAction* SufaceFilletConstructorMenu = surfaceMenu->addAction(QString::fromLocal8Bit("倒圆"));
 	QAction* SufaceChamferConstructorMenu = surfaceMenu->addAction(QString::fromLocal8Bit("倒角"));
 	QAction* SufaceThickeningMenu = surfaceMenu->addAction(QString::fromLocal8Bit("加厚"));
 	QAction* SufaceTorsionMenu = surfaceMenu->addAction(QString::fromLocal8Bit("扭转"));
-
 	QMenu* toolMenu = bar->addMenu(QString::fromLocal8Bit("工具"));
-
 	QMenu* helpMenu = bar->addMenu(QString::fromLocal8Bit("帮助"));
-
-	connect(readerSTPMenu, &QAction::triggered, this, [=]() {
-		QString filename = QFileDialog::getOpenFileName(nullptr, QObject::tr("read a stp file"),
-			"E:", QObject::tr("STEP Files(*.stp *.step)"));
-		auto shape = XStepRW::readFiles(filename.toStdString());
-
-		vtkNew<IVtkTools_ShapeDataSource> occSource; //创建一个可以被VTK使用的OCC数据源
-		occSource->SetShape(new IVtkOCC_Shape(shape)); //将shape添加到数据源中
-
-		// 映射、制图人
-		vtkSmartPointer<vtkOpenGLPolyDataMapper> mapper =
-			vtkSmartPointer<vtkOpenGLPolyDataMapper>::New();
-		mapper->SetInputConnection(occSource->GetOutputPort());    // 设置映射的渲染数据
-
-		// 演员
-		vtkSmartPointer<vtkActor> actor =
-			vtkSmartPointer<vtkActor>::New();
-		actor->SetMapper(mapper);
-
-		// 添加演员
-		renderer->AddActor(actor);
-	});
-
-
 	QToolBar* tool = new QToolBar(this);
 	this->addToolBar(tool);//构建工具栏
 	QAction* tool1 = new QAction(QString::fromLocal8Bit("打开"));

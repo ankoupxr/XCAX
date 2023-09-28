@@ -52,6 +52,15 @@
     <ClCompile Include="ModelTreeWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MainControlWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\Document.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\XCAFTools.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IO\XStepRW.h">
@@ -66,14 +75,26 @@
     <ClInclude Include="IO\XCafRW.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Base\Document.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\XCAFTools.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="ModelTreeWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="MainControlWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="ModelTreeWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="MainControlWidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

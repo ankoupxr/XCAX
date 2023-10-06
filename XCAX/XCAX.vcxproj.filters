@@ -21,6 +21,21 @@
       <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
       <Extensions>ts</Extensions>
     </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{e3be28d9-436f-4093-947f-442eddcbfd4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Design">
+      <UniqueIdentifier>{684e5f36-a09b-4359-9f0b-4b11d3b3619c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Base">
+      <UniqueIdentifier>{2b72f3fc-15c6-4aad-a57c-0fe2d2837516}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Form">
+      <UniqueIdentifier>{3d5fdce1-25e6-4175-80e4-bdaad2b8d1ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="View">
+      <UniqueIdentifier>{a85da8aa-c7c8-4950-acc0-d16ebce7337c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="XCAX.qrc">
@@ -29,12 +44,6 @@
     <QtUic Include="XCAX.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtMoc Include="XCAX.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <ClCompile Include="XCAX.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <QtRcc Include="Resource.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
@@ -49,17 +58,47 @@
     <ClCompile Include="IO\XStlRW.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ModelTreeWidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MainControlWidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Base\Document.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Base\XCAFTools.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\VtkRender.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\TreeNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Design\XDatumCS.cpp">
+      <Filter>Design</Filter>
+    </ClCompile>
+    <ClCompile Include="Design\XDatumLine.cpp">
+      <Filter>Design</Filter>
+    </ClCompile>
+    <ClCompile Include="Design\XDatumPlane.cpp">
+      <Filter>Design</Filter>
+    </ClCompile>
+    <ClCompile Include="Design\XDatumPoint.cpp">
+      <Filter>Design</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\Document.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\DocumentObject.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="MainControlWidget.cpp">
+      <Filter>Form</Filter>
+    </ClCompile>
+    <ClCompile Include="XCAX.cpp">
+      <Filter>Form</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelTreeWidget.cpp">
+      <Filter>Form</Filter>
+    </ClCompile>
+    <ClCompile Include="MainWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="View\MDIView.cpp">
+      <Filter>View</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -75,19 +114,58 @@
     <ClInclude Include="IO\XCafRW.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Base\Document.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Base\XCAFTools.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Base\VtkRender.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\TreeNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_MainControlWidget.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_ModelTreeWidget.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_XCAX.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Design\XDatumCS.h">
+      <Filter>Design</Filter>
+    </ClInclude>
+    <ClInclude Include="Design\XDatumLine.h">
+      <Filter>Design</Filter>
+    </ClInclude>
+    <ClInclude Include="Design\XDatumPlane.h">
+      <Filter>Design</Filter>
+    </ClInclude>
+    <ClInclude Include="Design\XDatumPoint.h">
+      <Filter>Design</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\Document.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\DocumentObject.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="View\MDIView.h">
+      <Filter>View</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="ModelTreeWidget.h">
-      <Filter>Header Files</Filter>
+    <QtMoc Include="XCAX.h">
+      <Filter>Form</Filter>
     </QtMoc>
     <QtMoc Include="MainControlWidget.h">
-      <Filter>Header Files</Filter>
+      <Filter>Form</Filter>
+    </QtMoc>
+    <QtMoc Include="ModelTreeWidget.h">
+      <Filter>Form</Filter>
+    </QtMoc>
+    <QtMoc Include="MainWindow.h">
+      <Filter>Form</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

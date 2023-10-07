@@ -100,6 +100,9 @@
     <ClCompile Include="View\MDIView.cpp">
       <Filter>View</Filter>
     </ClCompile>
+    <ClCompile Include="Base\App.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IO\XStepRW.h">
@@ -152,6 +155,9 @@
     </ClInclude>
     <ClInclude Include="View\MDIView.h">
       <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\App.h">
+      <Filter>Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -61,8 +61,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <ExternalIncludePath>G:\VTK9\Install\release\include\vtk-9.3;G:\OpenCASCADE-7.7.0-vc14-64\opencascade-7.7.0\inc;$(ExternalIncludePath)</ExternalIncludePath>
-    <LibraryPath>G:\VTK9\Install\release\lib;G:\OpenCASCADE-7.7.0-vc14-64\opencascade-7.7.0\build\win64\vc14\libd;$(LibraryPath)</LibraryPath>
+    <ExternalIncludePath>G:\env\vtk\inc\vtk-9.3;G:\env\occ\inc;$(ExternalIncludePath)</ExternalIncludePath>
+    <LibraryPath>G:\env\vtk\lib;G:\env\occ\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
   </PropertyGroup>
@@ -105,6 +105,7 @@
     <QtUic Include="ModelTreeWidget.ui" />
     <QtUic Include="XCAX.ui" />
     <QtMoc Include="XCAX.h" />
+    <ClCompile Include="Base\App.cpp" />
     <ClCompile Include="Base\Document.cpp" />
     <ClCompile Include="Base\DocumentObject.cpp" />
     <ClCompile Include="Base\TreeNode.cpp" />
@@ -124,6 +125,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Base\App.h" />
     <ClInclude Include="Base\Document.h" />
     <ClInclude Include="Base\DocumentObject.h" />
     <ClInclude Include="Base\TreeNode.h" />

@@ -10,20 +10,38 @@
     <height>467</height>
    </rect>
   </property>
-  <property name="windowTitle">
-   <string>ModelTreeWidget</string>
-  </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
-    <widget class="QTreeWidget" name="treeWidget">
-     <column>
-      <property name="text">
-       <string notr="true">1</string>
-      </property>
-     </column>
-    </widget>
-   </item>
-  </layout>
+	<layout class="QVBoxLayout" name="verticalLayout">
+	   <property name="leftMargin">
+		<number>0</number>
+	   </property>
+	   <property name="topMargin">
+		<number>0</number>
+	   </property>
+	   <property name="rightMargin">
+		<number>0</number>
+	   </property>
+	   <property name="bottomMargin">
+		<number>0</number>
+	   </property>
+	   <item>
+		<widget class="TreeWidget" name="treeWidget_Model">
+		 <property name="selectionMode">
+		  <enum>QAbstractItemView::ExtendedSelection</enum>
+		 </property>
+		 <property name="textElideMode">
+		  <enum>Qt::ElideNone</enum>
+		 </property>
+		 <attribute name="headerVisible">
+		  <bool>false</bool>
+		 </attribute>
+		 <column>
+		  <property name="text">
+		   <string notr="true">1</string>
+		  </property>
+		 </column>
+		</widget>
+	   </item>
+	  </layout>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

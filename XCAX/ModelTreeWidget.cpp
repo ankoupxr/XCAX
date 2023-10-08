@@ -1,9 +1,9 @@
 #include "ModelTreeWidget.h"
 
 ModelTreeWidget::ModelTreeWidget(QWidget *parent)
-	: QWidget(parent)
+	: QWidget(parent), m_ui(new Ui_ModelTreeWidgetClass)
 {
-	ui.setupUi(this);
+	m_ui->setupUi(this);
 }
 
 ModelTreeWidget::~ModelTreeWidget()

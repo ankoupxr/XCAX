@@ -72,6 +72,7 @@
     </Link>
     <ClCompile>
       <AdditionalIncludeDirectories>$(SolutionDir)\XCAX\IO;$(SolutionDir)\XCAX\Base;$(SolutionDir)\XCAX\View;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
@@ -102,9 +103,8 @@
     <QtRcc Include="Resource.qrc" />
     <QtRcc Include="XCAX.qrc" />
     <QtUic Include="MainControlWidget.ui" />
+    <QtUic Include="MainWindow.ui" />
     <QtUic Include="ModelTreeWidget.ui" />
-    <QtUic Include="XCAX.ui" />
-    <QtMoc Include="XCAX.h" />
     <ClCompile Include="Base\App.cpp" />
     <ClCompile Include="Base\Document.cpp" />
     <ClCompile Include="Base\DocumentObject.cpp" />
@@ -121,7 +121,6 @@
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="ModelTreeWidget.cpp" />
     <ClCompile Include="View\MDIView.cpp" />
-    <ClCompile Include="XCAX.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -143,7 +142,6 @@
     <QtMoc Include="MainWindow.h" />
     <ClInclude Include="ui_MainControlWidget.h" />
     <ClInclude Include="ui_ModelTreeWidget.h" />
-    <ClInclude Include="ui_XCAX.h" />
     <QtMoc Include="MainControlWidget.h" />
     <QtMoc Include="ModelTreeWidget.h" />
   </ItemGroup>

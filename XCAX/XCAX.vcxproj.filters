@@ -41,9 +41,6 @@
     <QtRcc Include="XCAX.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
-    <QtUic Include="XCAX.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
     <QtRcc Include="Resource.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
@@ -88,9 +85,6 @@
     <ClCompile Include="MainControlWidget.cpp">
       <Filter>Form</Filter>
     </ClCompile>
-    <ClCompile Include="XCAX.cpp">
-      <Filter>Form</Filter>
-    </ClCompile>
     <ClCompile Include="ModelTreeWidget.cpp">
       <Filter>Form</Filter>
     </ClCompile>
@@ -132,9 +126,6 @@
     <ClInclude Include="ui_ModelTreeWidget.h">
       <Filter>UI</Filter>
     </ClInclude>
-    <ClInclude Include="ui_XCAX.h">
-      <Filter>UI</Filter>
-    </ClInclude>
     <ClInclude Include="Design\XDatumCS.h">
       <Filter>Design</Filter>
     </ClInclude>
@@ -161,9 +152,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="XCAX.h">
-      <Filter>Form</Filter>
-    </QtMoc>
     <QtMoc Include="MainControlWidget.h">
       <Filter>Form</Filter>
     </QtMoc>
@@ -179,6 +167,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="MainControlWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="MainWindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

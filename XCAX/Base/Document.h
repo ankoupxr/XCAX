@@ -3,10 +3,7 @@
 #include <TDocStd_Document.hxx>
 #include <TreeNode.h>
 #include <filesystem>
-
-class Document;
-DEFINE_STANDARD_HANDLE(Document, TDocStd_Document)
-using DocPtr = Handle(Document);
+#include <Ptr.h>
 
 class  Document : public TDocStd_Document
 {
@@ -19,6 +16,10 @@ public:
 	const std::filesystem::path& FilePath();
 	void SetFilePath(const std::filesystem::path& filePath);
 
+	//ÎÄµµÃû³Æ
+	const std::string& Name();
+	void SetName(std::string name);
+
 	TDF_Label RootLabel() const;
 	TDF_Label EntityLabel() const;
 
@@ -28,10 +29,13 @@ public:
 	//Tree
 	TreeNodeId EntityTreeNodeId(int index) const;
 	
+	static const char* ConvertToFormat(Document::FormatType format);
 
 private:
 	int m_identify;
+	std::string m_name;
 	std::filesystem::path m_filePath;
+	Tree<TDF_Label> m_modelTree;
 };
 
 

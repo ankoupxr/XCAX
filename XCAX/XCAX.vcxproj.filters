@@ -97,6 +97,15 @@
     <ClCompile Include="Base\App.cpp">
       <Filter>Base</Filter>
     </ClCompile>
+    <ClCompile Include="Base\Ptr.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\Command.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\Container.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IO\XStepRW.h">
@@ -148,6 +157,15 @@
       <Filter>View</Filter>
     </ClInclude>
     <ClInclude Include="Base\App.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\Ptr.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\Command.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\Container.h">
       <Filter>Base</Filter>
     </ClInclude>
   </ItemGroup>

@@ -10,6 +10,8 @@ MainWindow::MainWindow(QWidget* parent)
 	m_ui(new Ui_MainWindow)
 {
 	m_ui->setupUi(this);
+	m_ui->splitter_Main->setStretchFactor(0, 1);
+	m_ui->splitter_Main->setStretchFactor(1, 120);
 	this->setWindowIcon(QIcon(":/images/windowIcon.jpg"));
 	//创建菜单
 	InitMenu();
@@ -33,8 +35,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::InitMenu()
 {
-	m_ui->splitter_Main->setStretchFactor(0, 1);
-	m_ui->splitter_Main->setStretchFactor(1, 120);
 	//创建菜单
 	QMenuBar* bar = m_ui->menuBar;
 	this->setMenuBar(bar);

@@ -25,6 +25,7 @@ public:
 	void OnResized();
 	void InitMenu();
 
+
 private:
 	class Ui_MainWindow* m_ui = nullptr;
 	QVTKOpenGLNativeWidget* qvtkWidget;

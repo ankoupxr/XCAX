@@ -61,8 +61,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <ExternalIncludePath>G:\env\vtk\inc\vtk-9.3;G:\env\occ\inc;$(ExternalIncludePath)</ExternalIncludePath>
-    <LibraryPath>G:\env\vtk\lib;G:\env\occ\lib;$(LibraryPath)</LibraryPath>
+    <ExternalIncludePath>G:\env\vtk\inc\vtk-9.3;G:\env\occ\inc;G:\env\boost;$(ExternalIncludePath)</ExternalIncludePath>
+    <LibraryPath>G:\env\vtk\lib;G:\env\occ\lib;G:\env\boost\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
   </PropertyGroup>
@@ -106,8 +106,11 @@
     <QtUic Include="MainWindow.ui" />
     <QtUic Include="ModelTreeWidget.ui" />
     <ClCompile Include="Base\App.cpp" />
+    <ClCompile Include="Base\Command.cpp" />
+    <ClCompile Include="Base\Container.cpp" />
     <ClCompile Include="Base\Document.cpp" />
     <ClCompile Include="Base\DocumentObject.cpp" />
+    <ClCompile Include="Base\Ptr.cpp" />
     <ClCompile Include="Base\TreeNode.cpp" />
     <ClCompile Include="Base\VtkRender.cpp" />
     <ClCompile Include="Base\XCAFTools.cpp" />
@@ -125,8 +128,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Base\App.h" />
+    <ClInclude Include="Base\Command.h" />
+    <ClInclude Include="Base\Container.h" />
     <ClInclude Include="Base\Document.h" />
     <ClInclude Include="Base\DocumentObject.h" />
+    <ClInclude Include="Base\Ptr.h" />
     <ClInclude Include="Base\TreeNode.h" />
     <ClInclude Include="Base\VtkRender.h" />
     <ClInclude Include="Base\XCAFTools.h" />

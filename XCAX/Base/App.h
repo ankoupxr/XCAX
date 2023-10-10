@@ -12,36 +12,36 @@
 class App : public TDocStd_Application
 {
 public:
+	App();
 	~App();
 
 	static const AppPtr& GetInstance();
 
-	struct DocumentIterator : private CDF_DirectoryIterator
-	{
-		DocumentIterator(const AppPtr& app);
-		DocumentIterator(const AppPtr* app);
-		bool HasNext() const;
-		void Next();
-		DocPtr current() const;
-		int currentIndex() const { return m_currentIndex; }
-	private:
-		int m_currentIndex = 0;
-	};
+	//struct DocumentIterator : private CDF_DirectoryIterator
+	//{
+	//	DocumentIterator(const AppPtr& app);
+	//	DocumentIterator(const AppPtr* app);
+	//	bool HasNext() const;
+	//	void Next();
+	//	DocPtr current() const;
+	//	int currentIndex() const { return m_currentIndex; }
+	//private:
+	//	int m_currentIndex = 0;
+	//};
 
 	int DocumentCount() const;
 	DocPtr CreateDocFile(Document::FormatType docFormat = Document::FormatType::Binary);
 	DocPtr EditDocFile(const std::filesystem::path& filepath, PCDM_ReaderStatus* ptrReadStatus = nullptr);
-	void CloseDocFile(const DocPtr& doc);
+	//void CloseDocFile(const DocPtr& doc);
 
-	void NewDocument(const TCollection_ExtendedString& format, Handle(CDM_Document)& outDoc) override;
-	void InitDocument(const opencascade::handle<CDM_Document>& doc) const override;
+	//void NewDocument(const TCollection_ExtendedString& format, Handle(CDM_Document)& outDoc) override;
+	//void InitDocument(const opencascade::handle<CDM_Document>& doc) const override;
 
 
 
 private:
 	friend class Document;
 
-	App();
-	void AddDocument(const DocPtr& doc);
+	//void AddDocument(const DocPtr& doc);
 
 };

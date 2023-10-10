@@ -5,6 +5,11 @@
 #include <XmlXCAFDrivers_DocumentRetrievalDriver.hxx>
 #include <XmlXCAFDrivers_DocumentStorageDriver.hxx>
 
+App::App()
+{
+}
+
+
 const AppPtr& App::GetInstance()
 {
     static AppPtr appPtr;
@@ -22,6 +27,7 @@ const AppPtr& App::GetInstance()
             new XmlXCAFDrivers_DocumentStorageDriver(strFougueCopyright)
         );
     }
+    return appPtr;
 }
 
 int App::DocumentCount() const
@@ -47,6 +53,11 @@ DocPtr App::EditDocFile(const std::filesystem::path& filepath, PCDM_ReaderStatus
         *ptrReadStatus = readStatus;
 
     DocPtr doc = DocPtr::DownCast(stdDoc);
-    this->AddDocument(doc);
+    //this->AddDocument(doc);
     return doc;
+}
+
+App::~App()
+{
+
 }

@@ -36,6 +36,9 @@
     <Filter Include="View">
       <UniqueIdentifier>{a85da8aa-c7c8-4950-acc0-d16ebce7337c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ActionCommand">
+      <UniqueIdentifier>{9066849b-0af6-4946-9b7e-abffc965b085}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="XCAX.qrc">
@@ -106,6 +109,12 @@
     <ClCompile Include="Base\Container.cpp">
       <Filter>Base</Filter>
     </ClCompile>
+    <ClCompile Include="Base\Signal.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="ActionCommand\FileCommand.cpp">
+      <Filter>ActionCommand</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IO\XStepRW.h">
@@ -162,11 +171,11 @@
     <ClInclude Include="Base\Ptr.h">
       <Filter>Base</Filter>
     </ClInclude>
-    <ClInclude Include="Base\Command.h">
+    <ClInclude Include="Base\Signal.h">
       <Filter>Base</Filter>
     </ClInclude>
-    <ClInclude Include="Base\Container.h">
-      <Filter>Base</Filter>
+    <ClInclude Include="ActionCommand\FileCommand.h">
+      <Filter>ActionCommand</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -178,6 +187,12 @@
     </QtMoc>
     <QtMoc Include="MainWindow.h">
       <Filter>Form</Filter>
+    </QtMoc>
+    <QtMoc Include="Base\Command.h">
+      <Filter>Base</Filter>
+    </QtMoc>
+    <QtMoc Include="Base\Container.h">
+      <Filter>Base</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

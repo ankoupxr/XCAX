@@ -17,7 +17,7 @@ public:
 	using BuilderPtr = std::unique_ptr<ModelTreeWidget>;
 
 
-	static DocumentTreeNode 
+	//static DocumentTreeNode 
 
 private:
 	class Ui_ModelTreeWidgetClass* m_ui = nullptr;

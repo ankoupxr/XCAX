@@ -2,7 +2,7 @@
 
 #include <QWidget>
 #include "ui_ModelTreeWidget.h"
-
+#include <Document.h>
 
 #include <memory>
 
@@ -18,6 +18,13 @@ public:
 
 
 	//static DocumentTreeNode 
+
+	void OnDocumentAdded(const DocPtr& doc);
+
+
+
+	QTreeWidgetItem* ModelTreeWidget::CreateTreeItem(const DocPtr& doc);
+
 
 private:
 	class Ui_ModelTreeWidgetClass* m_ui = nullptr;

@@ -7,6 +7,7 @@
 #include <functional>
 #include <Document.h>
 #include <Ptr.h>
+#include <boost\signals2.hpp>
 
 
 class App : public TDocStd_Application
@@ -37,11 +38,13 @@ public:
 	//void NewDocument(const TCollection_ExtendedString& format, Handle(CDM_Document)& outDoc) override;
 	//void InitDocument(const opencascade::handle<CDM_Document>& doc) const override;
 
-
+	boost::signals2::signal<void (const DocPtr&)> AddedDocumentSignal;
 
 private:
 	friend class Document;
 
-	//void AddDocument(const DocPtr& doc);
+	void AddDocument(const DocPtr& doc);
 
+	std::atomic<int> m_seqDocumentIdentifier = {};
+	std::unordered_map<int, DocPtr> m_mapIdentifierDocument;
 };

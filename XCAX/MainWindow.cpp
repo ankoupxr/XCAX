@@ -4,7 +4,7 @@
 #include <BRepPrimAPI_MakeSphere.hxx>
 #include <BRepAlgoAPI_Cut.hxx>
 #include <FileCommand.h>
-
+#include "ModelTreeWidget.h"
 
 MainWindow::MainWindow(QWidget* parent)
 	: QMainWindow(parent),
@@ -17,6 +17,7 @@ MainWindow::MainWindow(QWidget* parent)
 
 	auto app = new App();
 	m_app = app->GetInstance();
+	m_app->AddedDocumentSignal.connect(&ModelTreeWidget::OnDocumentAdded);
 	m_cmdContainer.SetApp(m_app);
 
 	//´´½¨²Ëµ¥

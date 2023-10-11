@@ -11,7 +11,7 @@
 #include <XCAFDoc_VisMaterialTool.hxx>
 
 
-class XCAFTools
+class XCAF
 {
 public:
 	
@@ -22,7 +22,11 @@ public:
 	Handle_XCAFDoc_MaterialTool materialTool() const;
 	Handle_XCAFDoc_VisMaterialTool visMaterialTool() const;
 
+	void setLabelMain(const TDF_Label& labelMain) { m_labelMain = labelMain; }
+	//void setModelTree(Tree<TDF_Label>& modelTree) { m_modelTree = &modelTree; }
+
 private:
     friend class Document;
     TDF_Label m_labelMain;
+	//Tree<TDF_Label>* m_modelTree = nullptr;
 };

@@ -31,11 +31,14 @@ public:
 	
 	static const char* ConvertToFormat(Document::FormatType format);
 
+	void SetIdentify(int identify) { m_identify = identify; };
+
 private:
 	int m_identify;
 	std::string m_name;
 	std::filesystem::path m_filePath;
 	//Tree<TDF_Label> m_modelTree;
+
 };
 
 

@@ -61,3 +61,15 @@ App::~App()
 {
 
 }
+
+void App::AddDocument(const DocPtr& doc)
+{
+    if (!doc.IsNull()) 
+    {
+        doc->SetIdentify(m_seqDocumentIdentifier.fetch_add(1));
+        m_mapIdentifierDocument.insert({ doc->Identify(),doc });
+        this->InitDocument(doc);
+        //doc->initXCaf();
+        this->AddedDocumentSignal(doc);
+    }
+}

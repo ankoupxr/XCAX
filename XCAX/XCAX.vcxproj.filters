@@ -30,14 +30,14 @@
     <Filter Include="Base">
       <UniqueIdentifier>{2b72f3fc-15c6-4aad-a57c-0fe2d2837516}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Form">
-      <UniqueIdentifier>{3d5fdce1-25e6-4175-80e4-bdaad2b8d1ee}</UniqueIdentifier>
-    </Filter>
     <Filter Include="View">
       <UniqueIdentifier>{a85da8aa-c7c8-4950-acc0-d16ebce7337c}</UniqueIdentifier>
     </Filter>
     <Filter Include="ActionCommand">
       <UniqueIdentifier>{9066849b-0af6-4946-9b7e-abffc965b085}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Form">
+      <UniqueIdentifier>{3d5fdce1-25e6-4175-80e4-bdaad2b8d1ee}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -56,9 +56,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="IO\XStlRW.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Base\XCAFTools.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Base\VtkRender.cpp">
@@ -91,9 +88,6 @@
     <ClCompile Include="ModelTreeWidget.cpp">
       <Filter>Form</Filter>
     </ClCompile>
-    <ClCompile Include="MainWindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="View\MDIView.cpp">
       <Filter>View</Filter>
     </ClCompile>
@@ -115,6 +109,12 @@
     <ClCompile Include="ActionCommand\FileCommand.cpp">
       <Filter>ActionCommand</Filter>
     </ClCompile>
+    <ClCompile Include="Base\XCAFTools.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="MainWindow.cpp">
+      <Filter>Form</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IO\XStepRW.h">
@@ -127,9 +127,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="IO\XCafRW.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Base\XCAFTools.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Base\VtkRender.h">
@@ -176,6 +173,9 @@
     </ClInclude>
     <ClInclude Include="ActionCommand\FileCommand.h">
       <Filter>ActionCommand</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\XCAFTools.h">
+      <Filter>Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

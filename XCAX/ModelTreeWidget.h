@@ -19,11 +19,10 @@ public:
 
 	//static DocumentTreeNode 
 
-	void OnDocumentAdded(const DocPtr& doc);
-
-
-
 	QTreeWidgetItem* ModelTreeWidget::CreateTreeItem(const DocPtr& doc);
+
+public slots:
+	void recvNewFileSignal(const DocPtr& doc);
 
 
 private:

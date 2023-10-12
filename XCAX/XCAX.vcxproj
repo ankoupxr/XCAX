@@ -129,7 +129,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ActionCommand\FileCommand.h" />
+    <QtMoc Include="ActionCommand\FileCommand.h" />
     <ClInclude Include="Base\App.h" />
     <QtMoc Include="Base\Command.h" />
     <QtMoc Include="Base\Container.h" />

@@ -16,6 +16,7 @@ public:
 	QAction* Action() const { return m_action; };
 	App* GetApp() const { return m_app.get(); };
 
+
 protected:
 	void SetAction(QAction* action);
 

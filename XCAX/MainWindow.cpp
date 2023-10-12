@@ -17,9 +17,14 @@ MainWindow::MainWindow(QWidget* parent)
 
 	auto app = new App();
 	m_app = app->GetInstance();
-	m_app->AddedDocumentSignal.connect(&ModelTreeWidget::OnDocumentAdded);
 	m_cmdContainer.SetApp(m_app);
 
+	m_modeltree = new ModelTreeWidget();
+	QVBoxLayout* layout = new QVBoxLayout();
+	layout->addWidget(m_modeltree);
+	layout->addStretch();
+	m_ui->widget_Left->setLayout(layout);
+	m_app->SetModelTree(m_modeltree);
 	//´´½¨²Ëµ¥
 	InitCommands();
 	InitMenu();

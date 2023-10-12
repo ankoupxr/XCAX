@@ -171,9 +171,6 @@
     <ClInclude Include="Base\Signal.h">
       <Filter>Base</Filter>
     </ClInclude>
-    <ClInclude Include="ActionCommand\FileCommand.h">
-      <Filter>ActionCommand</Filter>
-    </ClInclude>
     <ClInclude Include="Base\XCAFTools.h">
       <Filter>Base</Filter>
     </ClInclude>
@@ -193,6 +190,9 @@
     </QtMoc>
     <QtMoc Include="Base\Container.h">
       <Filter>Base</Filter>
+    </QtMoc>
+    <QtMoc Include="ActionCommand\FileCommand.h">
+      <Filter>ActionCommand</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,5 @@
 #include <FileCommand.h>
+#include <stringcov.h>
 
 
 
@@ -8,11 +9,20 @@ NewFileCommand::NewFileCommand(AppPtr app)
 	auto action = new QAction(this);
 	action->setText(QString::fromLocal8Bit("创建文档"));
 	this->SetAction(action);
+	this->connect(this, &NewFileCommand::sendNewFileSignal, app->GetModelTree(),&ModelTreeWidget::recvNewFileSignal);
 }
 
 void NewFileCommand::Execute() 
 {
-	static unsigned docSequenceId = 0;
 	auto docPtr = this->GetApp()->CreateDocFile(Document::FormatType::Binary);
-	//docPtr->setName(to_stdString(Command::tr("Anonymous%1").arg(++docSequenceId)));
+	emit this->sendNewFileSignal(docPtr);
+}
+
+
+ImportStepCommand::ImportStepCommand(AppPtr app) :Command(app)
+{
+	auto action = new QAction(this);
+	action->setText("导入STEP文件");
+	this->SetAction(action);
+	//this->connect(this, &NewFileCommand::sendNewFileSignal, app->GetModelTree(), &ModelTreeWidget::recvNewFileSignal);
 }

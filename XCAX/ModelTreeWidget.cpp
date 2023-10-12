@@ -9,20 +9,21 @@ ModelTreeWidget::ModelTreeWidget(QWidget *parent)
 ModelTreeWidget::~ModelTreeWidget()
 {}
 
-void ModelTreeWidget::OnDocumentAdded(const DocPtr& doc)
-{
-	auto treeItem = this->CreateTreeItem(doc);
-	m_ui->treeWidget->addTopLevelItem(treeItem);
-}
-
-
-
-
-
 
 QTreeWidgetItem* ModelTreeWidget::CreateTreeItem(const DocPtr& doc)
 {
 	QTreeWidgetItem* treeItem = new QTreeWidgetItem();
-	treeItem->setText(0, QString::fromStdString(doc->Name()));
+	auto docname = doc->Name();
+	treeItem->setText(0, QString::fromStdString(docname));
 	return treeItem;
+}
+
+void ModelTreeWidget::recvNewFileSignal(const DocPtr& doc)
+{
+	static unsigned docSequenceId = 1;
+	std::stringstream name;
+	name << "File" << docSequenceId++;
+	doc->SetName(name.str());
+	auto treeItem = this->CreateTreeItem(doc);
+	m_ui->treeWidget->addTopLevelItem(treeItem);
 }

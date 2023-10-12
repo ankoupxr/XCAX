@@ -2,10 +2,13 @@
 #include <Command.h>
 
 class NewFileCommand : public Command {
+	Q_OBJECT
 	public:
 		NewFileCommand(AppPtr app);
 		void Execute() override;
 		static constexpr std::string_view Name = "newdoc";
+	signals:
+		void sendNewFileSignal(const DocPtr& doc);
 };
 
 //class OpenFileCommand : Command
@@ -18,3 +21,14 @@ class NewFileCommand : public Command {
 //private:
 //
 //};
+
+
+class ImportStepCommand : public Command {
+	Q_OBJECT
+	public:
+		ImportStepCommand(AppPtr app);
+		void Execute() override;
+		static constexpr std::string_view Name = "newdoc";
+	signals:
+		void sendImportStepSignal();
+};

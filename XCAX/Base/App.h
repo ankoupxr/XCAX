@@ -8,6 +8,7 @@
 #include <Document.h>
 #include <Ptr.h>
 #include <boost\signals2.hpp>
+#include "../ModelTreeWidget.h"
 
 
 class App : public TDocStd_Application
@@ -35,11 +36,11 @@ public:
 	DocPtr EditDocFile(const std::filesystem::path& filepath, PCDM_ReaderStatus* ptrReadStatus = nullptr);
 	//void CloseDocFile(const DocPtr& doc);
 
-	//void NewDocument(const TCollection_ExtendedString& format, Handle(CDM_Document)& outDoc) override;
+	void NewDocument(const TCollection_ExtendedString& format, Handle(CDM_Document)& outDoc) override;
 	//void InitDocument(const opencascade::handle<CDM_Document>& doc) const override;
 
-	boost::signals2::signal<void (const DocPtr&)> AddedDocumentSignal;
-
+	void SetModelTree(ModelTreeWidget* modeltree) { m_modeltree = modeltree; };
+	ModelTreeWidget* GetModelTree() { return m_modeltree; }
 private:
 	friend class Document;
 
@@ -47,4 +48,6 @@ private:
 
 	std::atomic<int> m_seqDocumentIdentifier = {};
 	std::unordered_map<int, DocPtr> m_mapIdentifierDocument;
+
+	ModelTreeWidget* m_modeltree;
 };

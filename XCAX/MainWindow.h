@@ -29,11 +29,13 @@ public:
 	void InitMenu();
 	void InitCommands();
 
+
 private:
 	class Ui_MainWindow* m_ui = nullptr;
 	QVTKOpenGLNativeWidget* qvtkWidget;
 	vtkSmartPointer<vtkGenericOpenGLRenderWindow> renderWindow;
 	vtkSmartPointer<vtkRenderer> renderer;
+	ModelTreeWidget* m_modeltree;
 
 	AppPtr m_app;
 	CommandContainer m_cmdContainer;

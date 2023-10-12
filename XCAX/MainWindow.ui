@@ -38,18 +38,7 @@
       <property name="childrenCollapsible">
        <bool>false</bool>
       </property>
-      <widget class="QWidget" name="widget_Left" native="true">
-       <widget class="QStackedWidget" name="stack_LeftContents">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>0</width>
-          <height>0</height>
-         </rect>
-        </property>
-       </widget>
-      </widget>
+      <widget class="QWidget" name="widget_Left" native="true"/>
       <widget class="QWidget" name="widget_right" native="true">
        <layout class="QVBoxLayout" name="verticalLayout">
         <property name="spacing">

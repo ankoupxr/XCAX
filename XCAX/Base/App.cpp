@@ -83,3 +83,17 @@ void App::AddDocument(const DocPtr& doc)
         //doc->initXCaf();
     }
 }
+
+
+DocPtr App::FindDocumentByName(std::string name) const
+{
+    std::string docIndex;
+    for (char c : name) {
+        if (std::isdigit(c)) {
+            docIndex += c;
+        }
+    }
+    int index = std::stoi(docIndex);
+    auto itFound = m_mapIdentifierDocument.find(index);
+    return itFound != m_mapIdentifierDocument.cend() ? itFound->second : DocPtr();
+}

@@ -120,6 +120,7 @@
     <ClCompile Include="Design\XDatumLine.cpp" />
     <ClCompile Include="Design\XDatumPlane.cpp" />
     <ClCompile Include="Design\XDatumPoint.cpp" />
+    <ClCompile Include="IO\XRW.cpp" />
     <ClCompile Include="IO\XStepRW.cpp" />
     <ClCompile Include="IO\XStlRW.cpp" />
     <ClCompile Include="MainControlWidget.cpp" />
@@ -138,7 +139,7 @@
     <ClInclude Include="Base\Ptr.h" />
     <ClInclude Include="Base\Signal.h" />
     <ClInclude Include="Base\TreeNode.h" />
-    <ClInclude Include="Base\VtkRender.h" />
+    <QtMoc Include="Base\VtkRender.h" />
     <ClInclude Include="Base\XCAFTools.h" />
     <ClInclude Include="Design\XDatumCS.h" />
     <ClInclude Include="Design\XDatumLine.h" />

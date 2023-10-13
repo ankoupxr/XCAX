@@ -14,6 +14,11 @@
 #include <vtkRenderer.h>
 #include <vtkRenderWindowInteractor.h>
 
+#include <BRepPrimAPI_MakeBox.hxx>
+#include <IVtkTools_ShapeDataSource.hxx>
+#include <BRepPrimAPI_MakeSphere.hxx>
+#include <BRepAlgoAPI_Cut.hxx>
+
 #include <Container.h>
 #include <App.h>
 
@@ -29,6 +34,9 @@ public:
 	void InitMenu();
 	void InitCommands();
 
+public slots:
+	void recvModelTreeItemSignal(const QTreeWidgetItem* selectedItem);
+	void renderShape(const TopoDS_Shape ts);
 
 private:
 	class Ui_MainWindow* m_ui = nullptr;

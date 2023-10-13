@@ -19,6 +19,7 @@ public:
 
 protected:
 	void SetAction(QAction* action);
+	DocPtr m_doc = nullptr;
 
 private:
 	AppPtr m_app = nullptr;

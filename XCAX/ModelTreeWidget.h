@@ -21,8 +21,13 @@ public:
 
 	QTreeWidgetItem* ModelTreeWidget::CreateTreeItem(const DocPtr& doc);
 
+
+signals:
+	void sendModelTreeItemSignal(const QTreeWidgetItem* selectedItem);
+
 public slots:
 	void recvNewFileSignal(const DocPtr& doc);
+	void sendModelTreeItemSignalBuilder();
 
 
 private:

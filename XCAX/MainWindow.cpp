@@ -1,8 +1,4 @@
 #include "MainWindow.h"
-#include <BRepPrimAPI_MakeBox.hxx>
-#include <IVtkTools_ShapeDataSource.hxx>
-#include <BRepPrimAPI_MakeSphere.hxx>
-#include <BRepAlgoAPI_Cut.hxx>
 #include <FileCommand.h>
 #include "ModelTreeWidget.h"
 
@@ -12,7 +8,7 @@ MainWindow::MainWindow(QWidget* parent)
 {
 	m_ui->setupUi(this);
 	m_ui->splitter_Main->setStretchFactor(0, 1);
-	m_ui->splitter_Main->setStretchFactor(1, 120);
+	m_ui->splitter_Main->setStretchFactor(1, 3000);
 	this->setWindowIcon(QIcon(":/images/windowIcon.jpg"));
 
 	auto app = new App();
@@ -22,9 +18,10 @@ MainWindow::MainWindow(QWidget* parent)
 	m_modeltree = new ModelTreeWidget();
 	QVBoxLayout* layout = new QVBoxLayout();
 	layout->addWidget(m_modeltree);
-	layout->addStretch();
+	m_modeltree->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	m_ui->widget_Left->setLayout(layout);
 	m_app->SetModelTree(m_modeltree);
+	m_app->SetMainWin(this);
 	//创建菜单
 	InitCommands();
 	InitMenu();
@@ -113,9 +110,30 @@ void MainWindow::InitCommands()
 {
 	//文件
 	this->m_cmdContainer.AddNamedCommand<NewFileCommand>();
+	this->m_cmdContainer.AddNamedCommand<ImportStepCommand>()
 }
 
 void MainWindow::OnResized()
 {
 
+}
+
+void MainWindow::recvModelTreeItemSignal(const QTreeWidgetItem* selectedItem)
+{
+   auto docName = selectedItem->text(0);
+   DocPtr docptr = m_app->FindDocumentByName(docName.toStdString());
+   m_app->SetCurrentDocPtr(docptr);
+}
+
+void MainWindow::renderShape(const TopoDS_Shape ts) 
+{
+	vtkNew<IVtkTools_ShapeDataSource> occSource; //创建一个可以被VTK使用的OCC数据源
+	occSource->SetShape(new IVtkOCC_Shape(ts)); //将shape添加到数据源中
+	vtkNew<vtkPolyDataMapper> mapper; //创建一个VTK数据类型
+
+	mapper->SetInputConnection(occSource->GetOutputPort());
+
+	vtkNew<vtkActor> actor; //创建一个vtk actor
+	actor->SetMapper(mapper); //将vtk数据交给actor
+	renderer->AddActor(actor); //在渲染器中加入vtk actor
 }

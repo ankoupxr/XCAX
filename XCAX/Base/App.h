@@ -40,7 +40,13 @@ public:
 	//void InitDocument(const opencascade::handle<CDM_Document>& doc) const override;
 
 	void SetModelTree(ModelTreeWidget* modeltree) { m_modeltree = modeltree; };
-	ModelTreeWidget* GetModelTree() { return m_modeltree; }
+	ModelTreeWidget* GetModelTree() { return m_modeltree; };
+	void SetMainWin(QVTKOpenGLNativeWidget* vtkwindow) { m_vtkwindow = vtkwindow; };
+	QVTKOpenGLNativeWidget* GetMainWin() { return m_vtkwindow; };
+
+	DocPtr FindDocumentByName(std::string name) const;
+	void SetCurrentDocPtr(const DocPtr& doc) { m_currentDocPtr = doc; };
+	DocPtr GetCurrentDocPtr()  const { return m_currentDocPtr; };
 private:
 	friend class Document;
 
@@ -50,4 +56,6 @@ private:
 	std::unordered_map<int, DocPtr> m_mapIdentifierDocument;
 
 	ModelTreeWidget* m_modeltree;
+	QVTKOpenGLNativeWidget* m_vtkwindow;
+	DocPtr m_currentDocPtr;
 };

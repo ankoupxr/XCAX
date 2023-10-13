@@ -1,6 +1,7 @@
 #include <FileCommand.h>
 #include <stringcov.h>
-
+#include <QFileDialog>
+#include <XStepRW.h>
 
 
 NewFileCommand::NewFileCommand(AppPtr app) 
@@ -24,5 +25,19 @@ ImportStepCommand::ImportStepCommand(AppPtr app) :Command(app)
 	auto action = new QAction(this);
 	action->setText("导入STEP文件");
 	this->SetAction(action);
-	//this->connect(this, &NewFileCommand::sendNewFileSignal, app->GetModelTree(), &ModelTreeWidget::recvNewFileSignal);
+
+	m_doc = app->GetCurrentDocPtr();
+
+	this->connect(this, &ImportStepCommand::sendImportStepSignal, app->GetMainWin(),&MainWindow::renderShape);
+}
+
+void ImportStepCommand::Execute() 
+{
+	// 创建选择Step文件窗口
+	QString filePath = QFileDialog::getOpenFileName(nullptr, "选择Step文件", "", "Step文件 (*.step *.stp)");
+
+	XStepRW* rw = new XStepRW();
+	TopoDS_Shape ts = rw->readFiles(filePath.toStdString());
+	emit this->sendImportStepSignal(ts);
+	delete rw;
 }

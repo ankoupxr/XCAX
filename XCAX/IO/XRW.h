@@ -1,21 +1,16 @@
 #pragma once
 # include <string>
 #include <memory>
-
+#include <Document.h>
 
 class XRW
 {
 public:
-	virtual ~XRW() = default;
+	~XRW() = default;
 
-    // Reads file at path 'fp' into memory using indicator to report progress
-    // Returns 'true' on success
-    virtual bool readFile(const std::string& fp) = 0;
-};
-
-// Abstract base class for all reader factories
-class FactoryReader {
-public:
-    virtual ~FactoryReader() = default;
+	struct DocumentParams {
+		DocPtr targetDocument;
+		std::vector<std::filesystem::path> filePaths;
+	};
 
 };

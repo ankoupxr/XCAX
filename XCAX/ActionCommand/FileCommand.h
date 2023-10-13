@@ -30,5 +30,5 @@ class ImportStepCommand : public Command {
 		void Execute() override;
 		static constexpr std::string_view Name = "newdoc";
 	signals:
-		void sendImportStepSignal();
+		void sendImportStepSignal(TopoDS_Shape ts);
 };

@@ -39,6 +39,9 @@
     <Filter Include="Form">
       <UniqueIdentifier>{3d5fdce1-25e6-4175-80e4-bdaad2b8d1ee}</UniqueIdentifier>
     </Filter>
+    <Filter Include="IO">
+      <UniqueIdentifier>{06d2950b-6715-4ea9-be5e-e95b86334ba9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="XCAX.qrc">
@@ -50,12 +53,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="IO\XStepRW.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="IO\XStlRW.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Base\VtkRender.cpp">
@@ -115,21 +112,18 @@
     <ClCompile Include="MainWindow.cpp">
       <Filter>Form</Filter>
     </ClCompile>
+    <ClCompile Include="IO\XStepRW.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="IO\XStlRW.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="IO\XRW.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="IO\XStepRW.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IO\XStlRW.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IO\XRW.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="IO\XCafRW.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Base\VtkRender.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Base\TreeNode.h">
@@ -174,6 +168,15 @@
     <ClInclude Include="Base\XCAFTools.h">
       <Filter>Base</Filter>
     </ClInclude>
+    <ClInclude Include="IO\XStepRW.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="IO\XStlRW.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="IO\XRW.h">
+      <Filter>IO</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="MainControlWidget.h">
@@ -193,6 +196,9 @@
     </QtMoc>
     <QtMoc Include="ActionCommand\FileCommand.h">
       <Filter>ActionCommand</Filter>
+    </QtMoc>
+    <QtMoc Include="Base\VtkRender.h">
+      <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

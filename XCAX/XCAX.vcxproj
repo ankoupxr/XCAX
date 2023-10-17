@@ -105,6 +105,7 @@
     <QtUic Include="MainControlWidget.ui" />
     <QtUic Include="MainWindow.ui" />
     <QtUic Include="ModelTreeWidget.ui" />
+    <ClCompile Include="ActionCommand\FeatureCommand.cpp" />
     <ClCompile Include="ActionCommand\FileCommand.cpp" />
     <ClCompile Include="Base\App.cpp" />
     <ClCompile Include="Base\Command.cpp" />
@@ -131,6 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="ActionCommand\FileCommand.h" />
+    <QtMoc Include="ActionCommand\FeatureCommand.h" />
     <ClInclude Include="Base\App.h" />
     <QtMoc Include="Base\Command.h" />
     <QtMoc Include="Base\Container.h" />
@@ -139,7 +141,7 @@
     <ClInclude Include="Base\Ptr.h" />
     <ClInclude Include="Base\Signal.h" />
     <ClInclude Include="Base\TreeNode.h" />
-    <QtMoc Include="Base\VtkRender.h" />
+    <ClInclude Include="Base\VtkRender.h" />
     <ClInclude Include="Base\XCAFTools.h" />
     <ClInclude Include="Design\XDatumCS.h" />
     <ClInclude Include="Design\XDatumLine.h" />

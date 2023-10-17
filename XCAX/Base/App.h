@@ -9,7 +9,8 @@
 #include <Ptr.h>
 #include <boost\signals2.hpp>
 #include "../ModelTreeWidget.h"
-
+#include <VtkRender.h>
+#include <QVTKOpenGLNativeWidget.h>
 
 class App : public TDocStd_Application
 {
@@ -41,8 +42,8 @@ public:
 
 	void SetModelTree(ModelTreeWidget* modeltree) { m_modeltree = modeltree; };
 	ModelTreeWidget* GetModelTree() { return m_modeltree; };
-	void SetMainWin(QVTKOpenGLNativeWidget* vtkwindow) { m_vtkwindow = vtkwindow; };
-	QVTKOpenGLNativeWidget* GetMainWin() { return m_vtkwindow; };
+	void SetMainWin(QTVtkRender* vtkwindow) { m_vtkwindow = vtkwindow; };
+	QTVtkRender* GetMainWin() const { return m_vtkwindow; };
 
 	DocPtr FindDocumentByName(std::string name) const;
 	void SetCurrentDocPtr(const DocPtr& doc) { m_currentDocPtr = doc; };
@@ -56,6 +57,6 @@ private:
 	std::unordered_map<int, DocPtr> m_mapIdentifierDocument;
 
 	ModelTreeWidget* m_modeltree;
-	QVTKOpenGLNativeWidget* m_vtkwindow;
+	QTVtkRender* m_vtkwindow;
 	DocPtr m_currentDocPtr;
 };

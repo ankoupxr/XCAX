@@ -1,3 +1,5 @@
+#pragma once
+
 #include <QVTKOpenGLNativeWidget.h>
 #include <vtkGenericOpenGLRenderWindow.h>
 #include <QGridLayout>
@@ -9,22 +11,27 @@
 #include <vtkRenderWindow.h>
 #include <vtkRenderer.h>
 #include <vtkRenderWindowInteractor.h>
+#include <BRepPrimAPI_MakeBox.hxx>
+#include <IVtkTools_ShapeDataSource.hxx>
+#include <BRepPrimAPI_MakeSphere.hxx>
+#include <BRepAlgoAPI_Cut.hxx>
+#include <vtkCellPicker.h>
 
-
-class VtkRender : public QVTKOpenGLNativeWidget
+class QTVtkRender
 {
-	Q_OBJECT
 public:
-	VtkRender();
-	~VtkRender();
+	QTVtkRender();
+	~QTVtkRender();
 
 	void AddActor(vtkActor* actor);
 	void RemoveActor(vtkActor* actor);
 	void Render();
-	vtkRenderer* GetRenderer();
+	QVTKOpenGLNativeWidget* GetInstance() const { return m_vtkwidget; };
+	void renderShape(TopoDS_Shape ts);
 
 private:
 	vtkSmartPointer<vtkRenderer> m_renderer;
 	vtkSmartPointer<vtkRenderWindow> m_renderWindow;
+	QVTKOpenGLNativeWidget* m_vtkwidget;
 };
 

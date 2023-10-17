@@ -1,6 +1,4 @@
 #include "MainWindow.h"
-#include <FileCommand.h>
-#include "ModelTreeWidget.h"
 
 MainWindow::MainWindow(QWidget* parent)
 	: QMainWindow(parent),
@@ -21,27 +19,20 @@ MainWindow::MainWindow(QWidget* parent)
 	m_modeltree->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	m_ui->widget_Left->setLayout(layout);
 	m_app->SetModelTree(m_modeltree);
-	m_app->SetMainWin(this);
 	//创建菜单
 	InitCommands();
 	InitMenu();
 
-	//初始化VTK窗口，命名为qvtkWidget（原理和QPushButton这种QT自带的控件一样，只是该控件由VTK提供，用法跟QPushButton是一样的）
-	qvtkWidget = new QVTKOpenGLNativeWidget();
-	//初始化VTK的渲染器，平时用的比较多是vtkRenderWindow，但是在QT中要改用vtkGenericOpenGLRenderWindow，实质上与vtkRenderWindow功能一致
-	renderWindow = vtkSmartPointer<vtkGenericOpenGLRenderWindow>::New();
-	// 渲染器
-	renderer = vtkSmartPointer<vtkRenderer>::New();
-	renderWindow->AddRenderer(renderer);
+	QTVtkRender* vtkRender = new QTVtkRender();
+	m_app->SetMainWin(vtkRender);
 
-	//将渲染器加入到VTK窗口中。可以先写这一行，后续再将准备好的vtkRenderer加入到renderWindow中也是可以同步数据的
-	qvtkWidget->setRenderWindow(renderWindow);
-	m_ui->stack_GuiDocuments->addWidget(qvtkWidget);
-	//ui.vtlayout->addWidget(qvtkWidget);
+	m_ui->stack_GuiDocuments->addWidget(vtkRender->GetInstance());
 }
 
 MainWindow::~MainWindow()
-{}
+{
+	
+}
 
 void MainWindow::InitMenu()
 {
@@ -49,59 +40,42 @@ void MainWindow::InitMenu()
 	this->setMenuBar(bar);
 	QMenu* fileMenu = bar->addMenu(QString::fromLocal8Bit("文件"));
 	fileMenu->addAction(m_cmdContainer.FindCommandAction(NewFileCommand::Name));
-	//创建菜单
-	//QMenuBar* bar = m_ui->menuBar;
-	//this->setMenuBar(bar);
-	//QMenu* fileMenu = bar->addMenu(QString::fromLocal8Bit("文件"));
-	//QAction* readerDocMenu = fileMenu->addAction(QString::fromLocal8Bit("新建"));
-	//QAction* readerSTPMenu = fileMenu->addAction(QString::fromLocal8Bit("导入STEP"));
-	//QAction* readerSTLMenu = fileMenu->addAction(QString::fromLocal8Bit("导入STL"));
-	//QAction* readerOBJMenu = fileMenu->addAction(QString::fromLocal8Bit("导入OBJ"));
-	//QMenu* modelingMenu = bar->addMenu(QString::fromLocal8Bit("参数化"));
-	//QAction* CubeMenu = modelingMenu->addAction(QString::fromLocal8Bit("立方体"));
-	//QAction*Menu = modelingMenu->addAction(QString::fromLocal8Bit("圆柱体"));
-	//QAction* ShellMenu = modelingMenu->addAction(QString::fromLocal8Bit("圆锥体"));
-	//QAction* ThickeningMenu = modelingMenu->addAction(QString::fromLocal8Bit("加厚"));
-	//QAction* TorsionMenu = modelingMenu->addAction(QString::fromLocal8Bit("扭转"));
-	//QMenu* meshMenu = bar->addMenu(QString::fromLocal8Bit("网格"));
-	//QAction* FillHoleMenu = meshMenu->addAction(QString::fromLocal8Bit("补孔"));
-	//QAction* SimpleMenu = meshMenu->addAction(QString::fromLocal8Bit("简化"));
-	//QMenu* surfaceMenu = bar->addMenu(QString::fromLocal8Bit("曲面"));
-	//QAction* SufaceFilletConstructorMenu = surfaceMenu->addAction(QString::fromLocal8Bit("倒圆"));
-	//QAction* SufaceChamferConstructorMenu = surfaceMenu->addAction(QString::fromLocal8Bit("倒角"));
-	//QAction* SufaceThickeningMenu = surfaceMenu->addAction(QString::fromLocal8Bit("加厚"));
-	//QAction* SufaceTorsionMenu = surfaceMenu->addAction(QString::fromLocal8Bit("扭转"));
-	//QMenu* toolMenu = bar->addMenu(QString::fromLocal8Bit("工具"));
-	//QMenu* helpMenu = bar->addMenu(QString::fromLocal8Bit("帮助"));
-	//QToolBar* tool = m_ui->toolBar;
-	////this->addToolBar(tool);//构建工具栏
-	//QAction* tool1 = new QAction(QString::fromLocal8Bit("打开"));
-	//QAction* tool2 = new QAction(QString::fromLocal8Bit("导出"));
-	//QAction* tool3 = new QAction(QString::fromLocal8Bit("后"));
-	//QAction* tool4 = new QAction(QString::fromLocal8Bit("下"));
-	//QAction* tool5 = new QAction(QString::fromLocal8Bit("前"));
-	//QAction* tool6 = new QAction(QString::fromLocal8Bit("左"));
-	//QAction* tool7 = new QAction(QString::fromLocal8Bit("右"));
-	//QAction* tool8 = new QAction(QString::fromLocal8Bit("上"));
-	//QAction* tool9 = new QAction(QString::fromLocal8Bit("原来"));
-	//tool1->setIcon(QIcon(":/images/file.svg"));
-	//tool2->setIcon(QIcon(":/images/export.svg"));
-	//tool3->setIcon(QIcon(":/images/view-back.svg"));
-	//tool4->setIcon(QIcon(":/images/view-bottom.svg"));
-	//tool5->setIcon(QIcon(":/images/view-front.svg"));
-	//tool6->setIcon(QIcon(":/images/view-left.svg"));
-	//tool7->setIcon(QIcon(":/images/view-right.svg"));
-	//tool8->setIcon(QIcon(":/images/view-top.svg"));
-	//tool9->setIcon(QIcon(":/images/view-iso.svg"));
-	//tool->addAction(tool1);
-	//tool->addAction(tool2);
-	//tool->addAction(tool3);
-	//tool->addAction(tool4);
-	//tool->addAction(tool5);
-	//tool->addAction(tool6);
-	//tool->addAction(tool7);
-	//tool->addAction(tool8);
-	//tool->addAction(tool9);
+	fileMenu->addAction(m_cmdContainer.FindCommandAction(ImportStepCommand::Name));
+	fileMenu->addAction(m_cmdContainer.FindCommandAction(ImportObjCommand::Name));
+	QMenu* paramMenu = bar->addMenu(QString::fromLocal8Bit("参数化建模"));
+	QMenu* interactiveMenu = bar->addMenu(QString::fromLocal8Bit("交互式建模"));
+	QMenu* featureMenu = bar->addMenu(QString::fromLocal8Bit("特征操作"));
+	featureMenu->addAction(m_cmdContainer.FindCommandAction(ChamferCommand::Name));
+	
+	QToolBar* tool = m_ui->toolBar;
+	this->addToolBar(tool);//构建工具栏
+	QAction* tool1 = new QAction(QString::fromLocal8Bit("打开"));
+	QAction* tool2 = new QAction(QString::fromLocal8Bit("导出"));
+	QAction* tool3 = new QAction(QString::fromLocal8Bit("后"));
+	QAction* tool4 = new QAction(QString::fromLocal8Bit("下"));
+	QAction* tool5 = new QAction(QString::fromLocal8Bit("前"));
+	QAction* tool6 = new QAction(QString::fromLocal8Bit("左"));
+	QAction* tool7 = new QAction(QString::fromLocal8Bit("右"));
+	QAction* tool8 = new QAction(QString::fromLocal8Bit("上"));
+	QAction* tool9 = new QAction(QString::fromLocal8Bit("原来"));
+	tool1->setIcon(QIcon(":/images/file.svg"));
+	tool2->setIcon(QIcon(":/images/export.svg"));
+	tool3->setIcon(QIcon(":/images/view-back.svg"));
+	tool4->setIcon(QIcon(":/images/view-bottom.svg"));
+	tool5->setIcon(QIcon(":/images/view-front.svg"));
+	tool6->setIcon(QIcon(":/images/view-left.svg"));
+	tool7->setIcon(QIcon(":/images/view-right.svg"));
+	tool8->setIcon(QIcon(":/images/view-top.svg"));
+	tool9->setIcon(QIcon(":/images/view-iso.svg"));
+	tool->addAction(tool1);
+	tool->addAction(tool2);
+	tool->addAction(tool3);
+	tool->addAction(tool4);
+	tool->addAction(tool5);
+	tool->addAction(tool6);
+	tool->addAction(tool7);
+	tool->addAction(tool8);
+	tool->addAction(tool9);
 
 }
 
@@ -110,7 +84,9 @@ void MainWindow::InitCommands()
 {
 	//文件
 	this->m_cmdContainer.AddNamedCommand<NewFileCommand>();
-	this->m_cmdContainer.AddNamedCommand<ImportStepCommand>()
+	this->m_cmdContainer.AddNamedCommand<ImportStepCommand>();
+	//特征
+	this->m_cmdContainer.AddNamedCommand<ChamferCommand>();
 }
 
 void MainWindow::OnResized()
@@ -123,17 +99,4 @@ void MainWindow::recvModelTreeItemSignal(const QTreeWidgetItem* selectedItem)
    auto docName = selectedItem->text(0);
    DocPtr docptr = m_app->FindDocumentByName(docName.toStdString());
    m_app->SetCurrentDocPtr(docptr);
-}
-
-void MainWindow::renderShape(const TopoDS_Shape ts) 
-{
-	vtkNew<IVtkTools_ShapeDataSource> occSource; //创建一个可以被VTK使用的OCC数据源
-	occSource->SetShape(new IVtkOCC_Shape(ts)); //将shape添加到数据源中
-	vtkNew<vtkPolyDataMapper> mapper; //创建一个VTK数据类型
-
-	mapper->SetInputConnection(occSource->GetOutputPort());
-
-	vtkNew<vtkActor> actor; //创建一个vtk actor
-	actor->SetMapper(mapper); //将vtk数据交给actor
-	renderer->AddActor(actor); //在渲染器中加入vtk actor
 }

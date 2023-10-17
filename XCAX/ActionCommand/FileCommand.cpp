@@ -23,12 +23,11 @@ void NewFileCommand::Execute()
 ImportStepCommand::ImportStepCommand(AppPtr app) :Command(app)
 {
 	auto action = new QAction(this);
-	action->setText("导入STEP文件");
+	action->setText(QString::fromLocal8Bit("导入STEP文件"));
 	this->SetAction(action);
 
 	m_doc = app->GetCurrentDocPtr();
 
-	this->connect(this, &ImportStepCommand::sendImportStepSignal, app->GetMainWin(),&MainWindow::renderShape);
 }
 
 void ImportStepCommand::Execute() 
@@ -38,6 +37,17 @@ void ImportStepCommand::Execute()
 
 	XStepRW* rw = new XStepRW();
 	TopoDS_Shape ts = rw->readFiles(filePath.toStdString());
-	emit this->sendImportStepSignal(ts);
+	
+	m_app->GetMainWin()->renderShape(ts);
+
 	delete rw;
+}
+
+ImportObjCommand::ImportObjCommand(AppPtr app) :Command(app)
+{
+	auto action = new QAction(this);
+	action->setText(QString::fromLocal8Bit("导入OBJ文件"));
+	this->SetAction(action);
+
+	m_doc = app->GetCurrentDocPtr();
 }

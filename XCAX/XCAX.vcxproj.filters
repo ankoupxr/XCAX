@@ -121,6 +121,9 @@
     <ClCompile Include="IO\XRW.cpp">
       <Filter>IO</Filter>
     </ClCompile>
+    <ClCompile Include="ActionCommand\FeatureCommand.cpp">
+      <Filter>ActionCommand</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IO\XCafRW.h">
@@ -177,6 +180,9 @@
     <ClInclude Include="IO\XRW.h">
       <Filter>IO</Filter>
     </ClInclude>
+    <ClInclude Include="Base\VtkRender.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="MainControlWidget.h">
@@ -197,8 +203,8 @@
     <QtMoc Include="ActionCommand\FileCommand.h">
       <Filter>ActionCommand</Filter>
     </QtMoc>
-    <QtMoc Include="Base\VtkRender.h">
-      <Filter>Header Files</Filter>
+    <QtMoc Include="ActionCommand\FeatureCommand.h">
+      <Filter>ActionCommand</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

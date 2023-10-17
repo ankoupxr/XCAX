@@ -28,7 +28,14 @@ class ImportStepCommand : public Command {
 	public:
 		ImportStepCommand(AppPtr app);
 		void Execute() override;
-		static constexpr std::string_view Name = "newdoc";
-	signals:
-		void sendImportStepSignal(TopoDS_Shape ts);
+		static constexpr std::string_view Name = "importstep";
+};
+
+
+class ImportObjCommand : public Command {
+	Q_OBJECT
+	public:
+		ImportObjCommand(AppPtr app);
+		//void Execute() override;
+		static constexpr std::string_view Name = "importobj";
 };

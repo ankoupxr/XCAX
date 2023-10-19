@@ -6,13 +6,6 @@ QTVtkRender::QTVtkRender()
     m_renderWindow = vtkSmartPointer<vtkGenericOpenGLRenderWindow>::New();
     m_renderer = vtkSmartPointer<vtkRenderer>::New();
     m_renderWindow->AddRenderer(m_renderer);
-
-    vtkSmartPointer<vtkRenderWindowInteractor> interactor = vtkSmartPointer<vtkRenderWindowInteractor>::New();
-    interactor->SetRenderWindow(m_renderWindow);
-
-    vtkSmartPointer<vtkCellPicker> picker = vtkSmartPointer<vtkCellPicker>::New();
-    interactor->SetPicker(picker);
-
     m_vtkwidget->setRenderWindow(m_renderWindow);
 }
 

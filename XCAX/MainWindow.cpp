@@ -43,6 +43,7 @@ void MainWindow::InitMenu()
 	fileMenu->addAction(m_cmdContainer.FindCommandAction(ImportStepCommand::Name));
 	fileMenu->addAction(m_cmdContainer.FindCommandAction(ImportObjCommand::Name));
 	QMenu* paramMenu = bar->addMenu(QString::fromLocal8Bit("参数化建模"));
+	paramMenu->addAction(m_cmdContainer.FindCommandAction(CreateCubeCommand::Name));
 	QMenu* interactiveMenu = bar->addMenu(QString::fromLocal8Bit("交互式建模"));
 	QMenu* featureMenu = bar->addMenu(QString::fromLocal8Bit("特征操作"));
 	featureMenu->addAction(m_cmdContainer.FindCommandAction(ChamferCommand::Name));
@@ -85,6 +86,8 @@ void MainWindow::InitCommands()
 	//文件
 	this->m_cmdContainer.AddNamedCommand<NewFileCommand>();
 	this->m_cmdContainer.AddNamedCommand<ImportStepCommand>();
+	//参数化
+	this->m_cmdContainer.AddNamedCommand<CreateCubeCommand>();
 	//特征
 	this->m_cmdContainer.AddNamedCommand<ChamferCommand>();
 }

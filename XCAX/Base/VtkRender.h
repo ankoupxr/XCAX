@@ -26,6 +26,7 @@ public:
 	void AddActor(vtkActor* actor);
 	void RemoveActor(vtkActor* actor);
 	void Render();
+	vtkRenderer* GetRenderer() const { return m_renderer; };
 	QVTKOpenGLNativeWidget* GetInstance() const { return m_vtkwidget; };
 	void renderShape(TopoDS_Shape ts);
 

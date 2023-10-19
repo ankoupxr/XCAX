@@ -9,6 +9,7 @@
 #include <VtkRender.h>
 #include <FileCommand.h>
 #include <FeatureCommand.h>
+#include <ParamModelingCommand.h>
 #include "ModelTreeWidget.h"
 
 class MainWindow  : public QMainWindow

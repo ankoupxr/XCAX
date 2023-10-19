@@ -102,11 +102,13 @@
   <ItemGroup>
     <QtRcc Include="Resource.qrc" />
     <QtRcc Include="XCAX.qrc" />
+    <QtUic Include="cube_widget.ui" />
     <QtUic Include="MainControlWidget.ui" />
     <QtUic Include="MainWindow.ui" />
     <QtUic Include="ModelTreeWidget.ui" />
     <ClCompile Include="ActionCommand\FeatureCommand.cpp" />
     <ClCompile Include="ActionCommand\FileCommand.cpp" />
+    <ClCompile Include="ActionCommand\ParamModelingCommand.cpp" />
     <ClCompile Include="Base\App.cpp" />
     <ClCompile Include="Base\Command.cpp" />
     <ClCompile Include="Base\Container.cpp" />
@@ -117,6 +119,7 @@
     <ClCompile Include="Base\TreeNode.cpp" />
     <ClCompile Include="Base\VtkRender.cpp" />
     <ClCompile Include="Base\XCAFTools.cpp" />
+    <ClCompile Include="cube_widget.cpp" />
     <ClCompile Include="Design\XDatumCS.cpp" />
     <ClCompile Include="Design\XDatumLine.cpp" />
     <ClCompile Include="Design\XDatumPlane.cpp" />
@@ -127,12 +130,12 @@
     <ClCompile Include="MainControlWidget.cpp" />
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="ModelTreeWidget.cpp" />
-    <ClCompile Include="View\MDIView.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="ActionCommand\FileCommand.h" />
     <QtMoc Include="ActionCommand\FeatureCommand.h" />
+    <QtMoc Include="ActionCommand\ParamModelingCommand.h" />
     <ClInclude Include="Base\App.h" />
     <QtMoc Include="Base\Command.h" />
     <QtMoc Include="Base\Container.h" />
@@ -143,6 +146,7 @@
     <ClInclude Include="Base\TreeNode.h" />
     <ClInclude Include="Base\VtkRender.h" />
     <ClInclude Include="Base\XCAFTools.h" />
+    <QtMoc Include="cube_widget.h" />
     <ClInclude Include="Design\XDatumCS.h" />
     <ClInclude Include="Design\XDatumLine.h" />
     <ClInclude Include="Design\XDatumPlane.h" />
@@ -151,7 +155,6 @@
     <ClInclude Include="IO\XRW.h" />
     <ClInclude Include="IO\XStepRW.h" />
     <ClInclude Include="IO\XStlRW.h" />
-    <ClInclude Include="View\MDIView.h" />
     <QtMoc Include="MainWindow.h" />
     <ClInclude Include="ui_MainControlWidget.h" />
     <ClInclude Include="ui_ModelTreeWidget.h" />

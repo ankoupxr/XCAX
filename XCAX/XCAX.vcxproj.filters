@@ -1,14 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>qml;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>qrc;rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
@@ -16,10 +8,6 @@
     <Filter Include="Form Files">
       <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
       <Extensions>ui</Extensions>
-    </Filter>
-    <Filter Include="Translation Files">
-      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
-      <Extensions>ts</Extensions>
     </Filter>
     <Filter Include="UI">
       <UniqueIdentifier>{e3be28d9-436f-4093-947f-442eddcbfd4a}</UniqueIdentifier>
@@ -29,9 +17,6 @@
     </Filter>
     <Filter Include="Base">
       <UniqueIdentifier>{2b72f3fc-15c6-4aad-a57c-0fe2d2837516}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="View">
-      <UniqueIdentifier>{a85da8aa-c7c8-4950-acc0-d16ebce7337c}</UniqueIdentifier>
     </Filter>
     <Filter Include="ActionCommand">
       <UniqueIdentifier>{9066849b-0af6-4946-9b7e-abffc965b085}</UniqueIdentifier>
@@ -52,15 +37,6 @@
     </QtRcc>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Base\VtkRender.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Base\TreeNode.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Design\XDatumCS.cpp">
       <Filter>Design</Filter>
     </ClCompile>
@@ -84,9 +60,6 @@
     </ClCompile>
     <ClCompile Include="ModelTreeWidget.cpp">
       <Filter>Form</Filter>
-    </ClCompile>
-    <ClCompile Include="View\MDIView.cpp">
-      <Filter>View</Filter>
     </ClCompile>
     <ClCompile Include="Base\App.cpp">
       <Filter>Base</Filter>
@@ -124,14 +97,21 @@
     <ClCompile Include="ActionCommand\FeatureCommand.cpp">
       <Filter>ActionCommand</Filter>
     </ClCompile>
+    <ClCompile Include="ActionCommand\ParamModelingCommand.cpp">
+      <Filter>ActionCommand</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Base\VtkRender.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\TreeNode.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="cube_widget.cpp">
+      <Filter>Form</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="IO\XCafRW.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Base\TreeNode.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ui_MainControlWidget.h">
       <Filter>UI</Filter>
     </ClInclude>
@@ -156,9 +136,6 @@
     <ClInclude Include="Base\DocumentObject.h">
       <Filter>Base</Filter>
     </ClInclude>
-    <ClInclude Include="View\MDIView.h">
-      <Filter>View</Filter>
-    </ClInclude>
     <ClInclude Include="Base\App.h">
       <Filter>Base</Filter>
     </ClInclude>
@@ -180,8 +157,14 @@
     <ClInclude Include="IO\XRW.h">
       <Filter>IO</Filter>
     </ClInclude>
+    <ClInclude Include="Base\TreeNode.h">
+      <Filter>Base</Filter>
+    </ClInclude>
     <ClInclude Include="Base\VtkRender.h">
-      <Filter>Header Files</Filter>
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="IO\XCafRW.h">
+      <Filter>Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -206,6 +189,12 @@
     <QtMoc Include="ActionCommand\FeatureCommand.h">
       <Filter>ActionCommand</Filter>
     </QtMoc>
+    <QtMoc Include="ActionCommand\ParamModelingCommand.h">
+      <Filter>ActionCommand</Filter>
+    </QtMoc>
+    <QtMoc Include="cube_widget.h">
+      <Filter>Form</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="ModelTreeWidget.ui">
@@ -215,6 +204,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="MainWindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="cube_widget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

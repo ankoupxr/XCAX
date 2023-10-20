@@ -5,6 +5,7 @@
 #include <Document.h>
 
 #include <memory>
+#include <QTreeWidgetItem>
 
 class ModelTreeWidget : public QWidget
 {

@@ -9,9 +9,6 @@
       <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
       <Extensions>ui</Extensions>
     </Filter>
-    <Filter Include="UI">
-      <UniqueIdentifier>{e3be28d9-436f-4093-947f-442eddcbfd4a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Design">
       <UniqueIdentifier>{684e5f36-a09b-4359-9f0b-4b11d3b3619c}</UniqueIdentifier>
     </Filter>
@@ -55,12 +52,6 @@
     <ClCompile Include="Base\DocumentObject.cpp">
       <Filter>Base</Filter>
     </ClCompile>
-    <ClCompile Include="MainControlWidget.cpp">
-      <Filter>Form</Filter>
-    </ClCompile>
-    <ClCompile Include="ModelTreeWidget.cpp">
-      <Filter>Form</Filter>
-    </ClCompile>
     <ClCompile Include="Base\App.cpp">
       <Filter>Base</Filter>
     </ClCompile>
@@ -81,9 +72,6 @@
     </ClCompile>
     <ClCompile Include="Base\XCAFTools.cpp">
       <Filter>Base</Filter>
-    </ClCompile>
-    <ClCompile Include="MainWindow.cpp">
-      <Filter>Form</Filter>
     </ClCompile>
     <ClCompile Include="IO\XStepRW.cpp">
       <Filter>IO</Filter>
@@ -107,17 +95,17 @@
     <ClCompile Include="Base\TreeNode.cpp">
       <Filter>Base</Filter>
     </ClCompile>
-    <ClCompile Include="cube_widget.cpp">
+    <ClCompile Include="Form\ModelTreeWidget.cpp">
+      <Filter>Form</Filter>
+    </ClCompile>
+    <ClCompile Include="Form\MainWindow.cpp">
+      <Filter>Form</Filter>
+    </ClCompile>
+    <ClCompile Include="Form\cube_widget.cpp">
       <Filter>Form</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ui_MainControlWidget.h">
-      <Filter>UI</Filter>
-    </ClInclude>
-    <ClInclude Include="ui_ModelTreeWidget.h">
-      <Filter>UI</Filter>
-    </ClInclude>
     <ClInclude Include="Design\XDatumCS.h">
       <Filter>Design</Filter>
     </ClInclude>
@@ -166,17 +154,11 @@
     <ClInclude Include="IO\XCafRW.h">
       <Filter>Base</Filter>
     </ClInclude>
+    <ClInclude Include="Form\MainWindow.h">
+      <Filter>Form</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="MainControlWidget.h">
-      <Filter>Form</Filter>
-    </QtMoc>
-    <QtMoc Include="ModelTreeWidget.h">
-      <Filter>Form</Filter>
-    </QtMoc>
-    <QtMoc Include="MainWindow.h">
-      <Filter>Form</Filter>
-    </QtMoc>
     <QtMoc Include="Base\Command.h">
       <Filter>Base</Filter>
     </QtMoc>
@@ -192,21 +174,21 @@
     <QtMoc Include="ActionCommand\ParamModelingCommand.h">
       <Filter>ActionCommand</Filter>
     </QtMoc>
-    <QtMoc Include="cube_widget.h">
+    <QtMoc Include="Form\cube_widget.h">
+      <Filter>Form</Filter>
+    </QtMoc>
+    <QtMoc Include="Form\ModelTreeWidget.h">
       <Filter>Form</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="ModelTreeWidget.ui">
+    <QtUic Include="Form\cube_widget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="MainControlWidget.ui">
+    <QtUic Include="Form\MainWindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="MainWindow.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="cube_widget.ui">
+    <QtUic Include="Form\ModelTreeWidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

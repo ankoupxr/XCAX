@@ -1,5 +1,6 @@
 #pragma once
 #include <Command.h>
+#include <cube_widget.h>
 
 
 class CreateCubeCommand : public Command {
@@ -8,6 +9,6 @@ public:
 	CreateCubeCommand(AppPtr app);
 	void Execute() override;
 	static constexpr std::string_view Name = "new-cube";
+private:
+	cube_widget* cubeDialog;
 };
-
-class Create

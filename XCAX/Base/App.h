@@ -8,7 +8,7 @@
 #include <Document.h>
 #include <Ptr.h>
 #include <boost\signals2.hpp>
-#include <ModelTreeWidget.h>
+#include "../ModelTreeWidget.h"
 #include <VtkRender.h>
 #include <QVTKOpenGLNativeWidget.h>
 

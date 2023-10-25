@@ -1,6 +1,6 @@
 #pragma once
 #include <Command.h>
-#include <cube_widget.h>
+#include "../cube_widget.h"
 
 
 class CreateCubeCommand : public Command {

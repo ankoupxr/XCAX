@@ -3,20 +3,57 @@
 TopoDS_Shape XStepRW::readFiles(const std::string filepath)
 {
 
-	//STEPControl_Reader reader_Step;
-
 	auto file = filepath.data();
+	
+	STEPCAFControl_Reader reader;
+	reader.SetColorMode(true);
+	reader.SetNameMode(true);
 
-	//读取STEP文件
-	STEPControl_Reader aReader_Step;
-	aReader_Step.ReadFile(file);
-	//检查文件加载状态
-	aReader_Step.PrintCheckLoad(Standard_False, IFSelect_ItemsByEntity);
-	//加载step文件
-	Standard_Integer NbRoots = aReader_Step.NbRootsForTransfer();// 获取可转移根的数量
-	Standard_Integer num = aReader_Step.TransferRoots();//翻译所有可转换的根，并返回//成功翻译的次数
-	//读取到TopoDS_Shape结构中
-	TopoDS_Shape aShape = aReader_Step.OneShape();
+	IFSelect_ReturnStatus status = reader.ReadFile(file);
+	Handle(XCAFApp_Application) anApp = XCAFApp_Application::GetApplication();
+
+	Handle(TDocStd_Document) doc;
+	anApp->NewDocument("MDTV-XCAF", doc);
+	bool IsSuccess = reader.Transfer(doc);
+	if (IsSuccess) 
+	{
+		TDF_Label mainLabel = doc->Main();
+		Handle(XCAFDoc_ShapeTool) ShapeTool = XCAFDoc_DocumentTool::ShapeTool(mainLabel);
+		Handle(XCAFDoc_ColorTool) ColorTool = XCAFDoc_DocumentTool::ColorTool(mainLabel);
+
+		TDF_LabelSequence tdfLabels;
+		ShapeTool->GetFreeShapes(tdfLabels);
+		int Roots = tdfLabels.Length();
+
+	}
 
 	return aShape;
+}
+
+void XStepRW::BuildModelTree(const Handle(XCAFDoc_ShapeTool)& ShapeTool,
+	const Handle(XCAFDoc_ColorTool)& ColorTool,
+	const TDF_Label& Label,
+	TopLoc_Location Location,
+	TreeNodeId ParentNode,
+	Tree& Tree)
+{
+	TDF_LabelSequence components;
+	if (ShapeTool->GetComponents(Label, components))
+	{
+		for (Standard_Integer compIndex = 1; compIndex <= components.Length(); ++compIndex) 
+		{
+			TDF_Label ChildLabel = components.Value(compIndex);
+			if (ShapeTool->IsReference(ChildLabel))
+			{
+				TDF_Label ShapeLabel;
+				if (ShapeTool->GetReferredShape(ChildLabel, ShapeLabel))
+				{
+					TopLoc_Location LocalLocation = Location * ShapeTool->GetLocation(ChildLabel);
+					Assemly_Data AssemlyData = GetData(ShapeTool, ColorTool, ShapeLabel, LocalLocation);
+					TreeNodeId Node = Tree.AddNode(ParentNode, AssemlyData);
+					BuildModelTree(ShapeTool, ColorTool, ShapeLabel, LocalLocation, Node, Tree);
+				}
+			}
+		}
+	}
 }

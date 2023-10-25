@@ -6,7 +6,7 @@ MainWindow::MainWindow(QWidget* parent)
 {
 	m_ui->setupUi(this);
 	m_ui->splitter_Main->setStretchFactor(0, 1);
-	m_ui->splitter_Main->setStretchFactor(1, 1000);
+	m_ui->splitter_Main->setStretchFactor(1, 3000);
 	this->setWindowIcon(QIcon(":/images/windowIcon.jpg"));
 
 	auto app = new App();

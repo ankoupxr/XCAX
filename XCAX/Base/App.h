@@ -11,6 +11,11 @@
 #include "../ModelTreeWidget.h"
 #include <VtkRender.h>
 #include <QVTKOpenGLNativeWidget.h>
+#include <BinXCAFDrivers_DocumentRetrievalDriver.hxx>
+#include <BinXCAFDrivers_DocumentStorageDriver.hxx>
+#include <XCAFApp_Application.hxx>
+#include <XmlXCAFDrivers_DocumentRetrievalDriver.hxx>
+#include <XmlXCAFDrivers_DocumentStorageDriver.hxx>
 
 class App : public TDocStd_Application
 {

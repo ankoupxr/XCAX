@@ -13,6 +13,6 @@ void CreateCubeCommand::Execute()
 {
 	cubeDialog = new cube_widget(m_app);
 	cubeDialog->show();
-	
+
 }
 

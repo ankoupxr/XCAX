@@ -1,9 +1,4 @@
 #include <App.h>
-#include <BinXCAFDrivers_DocumentRetrievalDriver.hxx>
-#include <BinXCAFDrivers_DocumentStorageDriver.hxx>
-#include <XCAFApp_Application.hxx>
-#include <XmlXCAFDrivers_DocumentRetrievalDriver.hxx>
-#include <XmlXCAFDrivers_DocumentStorageDriver.hxx>
 
 App::App()
 {

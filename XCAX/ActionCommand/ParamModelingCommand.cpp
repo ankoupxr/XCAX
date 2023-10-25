@@ -11,8 +11,8 @@ CreateCubeCommand::CreateCubeCommand(AppPtr app)
 
 void CreateCubeCommand::Execute()
 {
-	gp_Pnt P(0, 0, 0);
-	TopoDS_Shape cube = BRepPrimAPI_MakeBox(P,100,100,100).Shape();
-	m_app->GetMainWin()->renderShape(cube);
+	cubeDialog = new cube_widget(m_app);
+	cubeDialog->show();
+
 }
 

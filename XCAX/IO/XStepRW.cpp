@@ -1,6 +1,6 @@
 #include "XStepRW.h"
 
-TopoDS_Shape XStepRW::readFiles(const std::string filepath)
+TopoDS_Shape XStepRW::readFiles(const std::string filepath,Tree& tree)
 {
 
 	auto file = filepath.data();
@@ -25,9 +25,15 @@ TopoDS_Shape XStepRW::readFiles(const std::string filepath)
 		ShapeTool->GetFreeShapes(tdfLabels);
 		int Roots = tdfLabels.Length();
 
+		TreeNodeId rootNodeId = tree.GetRootNode();
+		for (int index = 1; index <= Roots; index++)
+		{
+			TDF_Label label = tdfLabels.Value(index);
+			BuildModelTree(ShapeTool, ColorTool, label,TopLoc_Location(), rootNodeId,tree);
+		}
 	}
 
-	return aShape;
+	return reader.Reader().OneShape();
 }
 
 void XStepRW::BuildModelTree(const Handle(XCAFDoc_ShapeTool)& ShapeTool,
@@ -49,8 +55,8 @@ void XStepRW::BuildModelTree(const Handle(XCAFDoc_ShapeTool)& ShapeTool,
 				if (ShapeTool->GetReferredShape(ChildLabel, ShapeLabel))
 				{
 					TopLoc_Location LocalLocation = Location * ShapeTool->GetLocation(ChildLabel);
-					Assemly_Data AssemlyData = GetData(ShapeTool, ColorTool, ShapeLabel, LocalLocation);
-					TreeNodeId Node = Tree.AddNode(ParentNode, AssemlyData);
+					//TreeData treeData = GetData(ShapeTool, ColorTool, ShapeLabel, LocalLocation);
+					TreeNodeId Node = Tree.AppendChild(ParentNode);
 					BuildModelTree(ShapeTool, ColorTool, ShapeLabel, LocalLocation, Node, Tree);
 				}
 			}

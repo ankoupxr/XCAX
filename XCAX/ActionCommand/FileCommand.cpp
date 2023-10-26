@@ -36,11 +36,9 @@ void ImportStepCommand::Execute()
 	QString filePath = QFileDialog::getOpenFileName(nullptr, "选择Step文件", "", "Step文件 (*.step *.stp)");
 
 	XStepRW rw;
-	TopoDS_Shape ts = rw->readFiles(filePath.toStdString());
+	TopoDS_Shape ts = rw.readFiles(filePath.toStdString());
 	
 	m_app->GetMainWin()->renderShape(ts);
-
-	delete rw;
 }
 
 ImportObjCommand::ImportObjCommand(AppPtr app) :Command(app)

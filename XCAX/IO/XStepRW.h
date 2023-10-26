@@ -13,7 +13,7 @@
 class XStepRW
 {
 public:
-	static TopoDS_Shape readFiles(const std::string filepath);
+	static TopoDS_Shape readFiles(const std::string filepath,Tree& tree);
 
     static void BuildModelTree(const Handle(XCAFDoc_ShapeTool)& ShapeTool,
         const Handle(XCAFDoc_ColorTool)& ColorTool,

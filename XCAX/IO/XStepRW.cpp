@@ -56,7 +56,7 @@ void XStepRW::BuildModelTree(const Handle(XCAFDoc_ShapeTool)& ShapeTool,
 				{
 					TopLoc_Location LocalLocation = Location * ShapeTool->GetLocation(ChildLabel);
 					//TreeData treeData = GetData(ShapeTool, ColorTool, ShapeLabel, LocalLocation);
-					TreeNodeId Node = Tree.AppendChild(ParentNode);
+					TreeNodeId Node = Tree.AppendChild(ParentNode,ShapeLabel);
 					BuildModelTree(ShapeTool, ColorTool, ShapeLabel, LocalLocation, Node, Tree);
 				}
 			}

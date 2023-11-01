@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <vector>
 #include <Document.h>
+#include <TDF_Tool.hxx>
 
 
 using TreeNodeId = uint32_t;
@@ -17,7 +18,7 @@ public:
 
 	std::vector<TreeNodeId> NodeChilds(TreeNodeId id) const;
 
-	TreeNodeId AppendChild(TreeNodeId parentId);
+	TreeNodeId AppendChild(TreeNodeId parentId, TDF_Label label);
 	//void RemoveRoot(TreeNodeId id);
 
 	//~Tree();
@@ -27,6 +28,7 @@ private:
 	{
 		TreeNodeId Id;
 		TreeNodeId ParentId;
+		TDF_Label Name;
 		bool IsDeleted;
 	};
 	TreeNodeId m_rootId = 0;

@@ -19,6 +19,8 @@ MainWindow::MainWindow(QWidget* parent)
 	m_modeltree->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	m_ui->widget_Left->setLayout(layout);
 	m_app->SetModelTree(m_modeltree);
+	connect(m_modeltree, &ModelTreeWidget::sendModelTreeItemSignal,
+		this, &MainWindow::recvModelTreeItemSignal);
 	//´´½¨²Ëµ¥
 	InitCommands();
 	InitMenu();

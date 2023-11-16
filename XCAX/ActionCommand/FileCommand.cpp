@@ -36,8 +36,7 @@ void ImportStepCommand::Execute()
 	QString filePath = QFileDialog::getOpenFileName(nullptr, "选择Step文件", "", "Step文件 (*.step *.stp)");
 
 	XStepRW rw;
-	Tree* tree = new Tree();
-	TopoDS_Shape ts = rw.readFiles(filePath.toStdString(),*tree);
+	TopoDS_Shape ts = rw.readFiles(filePath.toStdString(), m_app->GetCurrentDocPtr()->GetRootItem());
 	
 	m_app->GetMainWin()->renderShape(ts);
 }

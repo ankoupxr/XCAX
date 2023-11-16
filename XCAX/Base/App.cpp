@@ -32,9 +32,6 @@ int App::DocumentCount() const
 
 void App::NewDocument(const TCollection_ExtendedString&, Handle(CDM_Document)& outDocument)
 {
-    // TODO: check format == "mayo" if not throw exception
-    // Extended from TDocStd_Application::NewDocument() implementation, ensure that in future
-    // OpenCascade versions this code is still compatible!
     DocPtr newDoc = new Document(this);
     CDF_Application::Open(newDoc); // Add the document in the session
     this->AddDocument(newDoc);
@@ -75,7 +72,6 @@ void App::AddDocument(const DocPtr& doc)
         doc->SetIdentify(m_seqDocumentIdentifier.fetch_add(1));
         m_mapIdentifierDocument.insert({ doc->Identify(),doc });
         this->InitDocument(doc);
-        //doc->initXCaf();
     }
 }
 
@@ -89,6 +85,6 @@ DocPtr App::FindDocumentByName(std::string name) const
         }
     }
     int index = std::stoi(docIndex);
-    auto itFound = m_mapIdentifierDocument.find(index);
+    auto itFound = m_mapIdentifierDocument.find(index-1);
     return itFound != m_mapIdentifierDocument.cend() ? itFound->second : DocPtr();
 }

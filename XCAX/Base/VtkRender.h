@@ -16,6 +16,9 @@
 #include <BRepPrimAPI_MakeSphere.hxx>
 #include <BRepAlgoAPI_Cut.hxx>
 #include <vtkCellPicker.h>
+#include <vtkAxesActor.h>
+#include <vtkOrientationMarkerWidget.h>
+#include <vtkProperty.h>
 
 class QTVtkRender
 {
@@ -34,5 +37,6 @@ private:
 	vtkSmartPointer<vtkRenderer> m_renderer;
 	vtkSmartPointer<vtkRenderWindow> m_renderWindow;
 	QVTKOpenGLNativeWidget* m_vtkwidget;
+	vtkSmartPointer<vtkOrientationMarkerWidget> MarkerWidget;
 };
 

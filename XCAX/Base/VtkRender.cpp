@@ -7,6 +7,29 @@ QTVtkRender::QTVtkRender()
     m_renderer = vtkSmartPointer<vtkRenderer>::New();
     m_renderWindow->AddRenderer(m_renderer);
     m_vtkwidget->setRenderWindow(m_renderWindow);
+
+    // 显示坐标系的vtk组件
+    vtkSmartPointer<vtkAxesActor> axes_actor = vtkSmartPointer<vtkAxesActor>::New();
+    axes_actor->SetPosition(0, 0, 0);
+    axes_actor->SetTotalLength(2, 2, 2);
+    axes_actor->SetShaftType(0);
+    axes_actor->SetCylinderRadius(0.03);
+    axes_actor->SetAxisLabels(1);
+    axes_actor->SetTipType(0);
+    axes_actor->SetXAxisLabelText("X");
+    axes_actor->SetYAxisLabelText("Y");
+    axes_actor->SetZAxisLabelText("Z");
+    axes_actor->GetXAxisShaftProperty()->SetColor(1, 0, 0);
+    axes_actor->GetYAxisShaftProperty()->SetColor(0, 1, 0);
+    axes_actor->GetZAxisShaftProperty()->SetColor(0, 0, 1);
+
+    // 控制坐标系，使之随视角共同变化
+    MarkerWidget = vtkSmartPointer<vtkOrientationMarkerWidget>::New();
+    MarkerWidget->SetOrientationMarker(axes_actor);
+    MarkerWidget->SetInteractor(m_vtkwidget->interactor());
+    MarkerWidget->SetViewport(0.0, 0.0, 0.2, 0.2);
+    MarkerWidget->SetEnabled(1);
+    MarkerWidget->SetOutlineColor(1, 0, 0);
 }
 
 

@@ -5,6 +5,7 @@
 #include <filesystem>
 #include <Ptr.h>
 #include <mutex>
+#include <QTreeWidgetItem>
 
 class  Document : public TDocStd_Document
 {
@@ -37,14 +38,15 @@ public:
 
 	void SetIdentify(int identify) { m_identify = identify; };
 
-
+	QTreeWidgetItem* GetRootItem() { return m_rootItem; };
+	void SetRootItem(QTreeWidgetItem* rootItem) { m_rootItem = rootItem; };
 private:
 
 	AppPtr m_app;
 	int m_identify;
 	std::string m_name;
 	std::filesystem::path m_filePath;
-	//Tree<TDF_Label> m_modelTree;
+	QTreeWidgetItem* m_rootItem;
 
 };
 

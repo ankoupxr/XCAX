@@ -19,7 +19,7 @@ TreeNodeId Tree::AppendChild(TreeNodeId parentId, TDF_Label label)
     m_currentId++;
     TreeNode currentNode;
     TCollection_AsciiString asciiString;
-    TDF_Tool::Label(label, asciiString); 
+    //TDF_Tool::Label(label, asciiString); 
 
     const char* charString = asciiString.ToCString(); // ½«TCollection_AsciiString×ª»»Îªconst char*
     currentNode.ParentId = parentId;

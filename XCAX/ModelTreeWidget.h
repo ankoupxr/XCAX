@@ -21,7 +21,8 @@ public:
 	//static DocumentTreeNode 
 
 	QTreeWidgetItem* ModelTreeWidget::CreateTreeItem(const DocPtr& doc);
-
+	void SetCurrentDocPtr(const DocPtr& doc) { m_currentDocPtr = doc; };
+	DocPtr GetCurrentDocPtr()  const { return m_currentDocPtr; };
 
 signals:
 	void sendModelTreeItemSignal(const QTreeWidgetItem* selectedItem);
@@ -33,4 +34,6 @@ public slots:
 
 private:
 	class Ui_ModelTreeWidgetClass* m_ui = nullptr;
+	DocPtr m_currentDocPtr;
+	AppPtr m_app;
 };

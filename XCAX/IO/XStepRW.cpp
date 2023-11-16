@@ -1,6 +1,6 @@
 #include "XStepRW.h"
 
-TopoDS_Shape XStepRW::readFiles(const std::string filepath,Tree& tree)
+TopoDS_Shape XStepRW::readFiles(const std::string filepath, QTreeWidgetItem* parentItem)
 {
 
 	auto file = filepath.data();
@@ -20,46 +20,51 @@ TopoDS_Shape XStepRW::readFiles(const std::string filepath,Tree& tree)
 		TDF_Label mainLabel = doc->Main();
 		Handle(XCAFDoc_ShapeTool) ShapeTool = XCAFDoc_DocumentTool::ShapeTool(mainLabel);
 		Handle(XCAFDoc_ColorTool) ColorTool = XCAFDoc_DocumentTool::ColorTool(mainLabel);
-
 		TDF_LabelSequence tdfLabels;
 		ShapeTool->GetFreeShapes(tdfLabels);
-		int Roots = tdfLabels.Length();
 
-		TreeNodeId rootNodeId = tree.GetRootNode();
-		for (int index = 1; index <= Roots; index++)
+		int Roots = tdfLabels.Length();
+		for (Standard_Integer i = 1;i <= Roots;i++) 
 		{
-			TDF_Label label = tdfLabels.Value(index);
-			BuildModelTree(ShapeTool, ColorTool, label,TopLoc_Location(), rootNodeId,tree);
+			const TDF_Label& shapeLabel = tdfLabels.Value(i);
+
+			TCollection_AsciiString labelId;
+			TDF_Tool::Entry(mainLabel, labelId);
+
+			Handle_TDataStd_Name nameAttr;
+			if (mainLabel.FindAttribute(TDataStd_Name::GetID(), nameAttr))
+			{
+				TCollection_ExtendedString partName = nameAttr->Get();
+				QTreeWidgetItem* childItem = new QTreeWidgetItem(parentItem);
+				childItem->setText(0, QString::fromUtf16(partName.ToExtString(), partName.Length()));
+
+				buildTreeWidget(mainLabel, childItem);
+			}
 		}
+
+
+		buildTreeWidget(mainLabel, parentItem);
 	}
 
 	return reader.Reader().OneShape();
 }
 
-void XStepRW::BuildModelTree(const Handle(XCAFDoc_ShapeTool)& ShapeTool,
-	const Handle(XCAFDoc_ColorTool)& ColorTool,
-	const TDF_Label& Label,
-	TopLoc_Location Location,
-	TreeNodeId ParentNode,
-	Tree& Tree)
-{
-	TDF_LabelSequence components;
-	if (ShapeTool->GetComponents(Label, components))
-	{
-		for (Standard_Integer compIndex = 1; compIndex <= components.Length(); ++compIndex) 
+void XStepRW::buildTreeWidget(const TDF_Label& label, QTreeWidgetItem* parentItem) {
+	TDF_ChildIterator it(label, Standard_True);
+	for (; it.More(); it.Next()) {
+		const TDF_Label& childLabel = it.Value();
+
+		TCollection_AsciiString labelId;
+		TDF_Tool::Entry(childLabel, labelId);
+
+		Handle_TDataStd_Name nameAttr;
+		if (childLabel.FindAttribute(TDataStd_Name::GetID(), nameAttr)) 
 		{
-			TDF_Label ChildLabel = components.Value(compIndex);
-			if (ShapeTool->IsReference(ChildLabel))
-			{
-				TDF_Label ShapeLabel;
-				if (ShapeTool->GetReferredShape(ChildLabel, ShapeLabel))
-				{
-					TopLoc_Location LocalLocation = Location * ShapeTool->GetLocation(ChildLabel);
-					//TreeData treeData = GetData(ShapeTool, ColorTool, ShapeLabel, LocalLocation);
-					TreeNodeId Node = Tree.AppendChild(ParentNode,ShapeLabel);
-					BuildModelTree(ShapeTool, ColorTool, ShapeLabel, LocalLocation, Node, Tree);
-				}
-			}
+			TCollection_ExtendedString partName = nameAttr->Get();
+			QTreeWidgetItem* childItem = new QTreeWidgetItem(parentItem);
+			childItem->setText(0, QString::fromUtf16(partName.ToExtString(), partName.Length()));
+
+			buildTreeWidget(childLabel, childItem);
 		}
 	}
 }

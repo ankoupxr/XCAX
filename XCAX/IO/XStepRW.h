@@ -9,18 +9,19 @@
 #include <XCAFDoc_DocumentTool.hxx>
 #include <XCAFDoc_ShapeTool.hxx>
 #include <TreeNode.h>
+#include <QTreeWidget>
+#include <TDF_Label.hxx>
+#include <TDF_Tool.hxx>
+#include <TDF_ChildIterator.hxx>
+#include <QTreeWidgetItem>
+#include <TDataStd_Name.hxx>
 
 class XStepRW
 {
 public:
-	static TopoDS_Shape readFiles(const std::string filepath,Tree& tree);
+	static TopoDS_Shape readFiles(const std::string filepath, QTreeWidgetItem* parentItem);
 
-    static void BuildModelTree(const Handle(XCAFDoc_ShapeTool)& ShapeTool,
-        const Handle(XCAFDoc_ColorTool)& ColorTool,
-        const TDF_Label& Label,
-        TopLoc_Location Location,
-        TreeNodeId ParentNode,
-        Tree& Tree);
+	static void buildTreeWidget(const TDF_Label& label, QTreeWidgetItem* parentItem);
 
 private:
 

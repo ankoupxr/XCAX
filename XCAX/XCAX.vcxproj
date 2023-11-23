@@ -100,6 +100,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Base\GeoManager.cpp" />
+    <ClCompile Include="Base\GeoShape.cpp" />
+    <ClCompile Include="ControlPanel.cpp" />
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="ModelTreeWidget.cpp" />
     <QtRcc Include="Resource.qrc" />
@@ -113,10 +116,8 @@
     <ClCompile Include="Base\Document.cpp" />
     <ClCompile Include="Base\DocumentObject.cpp" />
     <ClCompile Include="Base\Ptr.cpp" />
-    <ClCompile Include="Base\Signal.cpp" />
     <ClCompile Include="Base\TreeNode.cpp" />
     <ClCompile Include="Base\VtkRender.cpp" />
-    <ClCompile Include="Base\XCAFTools.cpp" />
     <ClCompile Include="cube_widget.cpp" />
     <ClCompile Include="Design\XDatumCS.cpp" />
     <ClCompile Include="Design\XDatumLine.cpp" />
@@ -138,12 +139,13 @@
     <QtMoc Include="Base\Container.h" />
     <ClInclude Include="Base\Document.h" />
     <ClInclude Include="Base\DocumentObject.h" />
+    <ClInclude Include="Base\GeoManager.h" />
+    <ClInclude Include="Base\GeoShape.h" />
     <ClInclude Include="Base\Ptr.h" />
-    <ClInclude Include="Base\Signal.h" />
     <ClInclude Include="Base\TreeNode.h" />
     <ClInclude Include="Base\VtkRender.h" />
-    <ClInclude Include="Base\XCAFTools.h" />
     <QtMoc Include="cube_widget.h" />
+    <QtMoc Include="ControlPanel.h" />
     <ClInclude Include="Design\XDatumCS.h" />
     <ClInclude Include="Design\XDatumLine.h" />
     <ClInclude Include="Design\XDatumPlane.h" />

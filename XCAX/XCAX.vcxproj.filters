@@ -60,14 +60,8 @@
     <ClCompile Include="Base\Container.cpp">
       <Filter>Base</Filter>
     </ClCompile>
-    <ClCompile Include="Base\Signal.cpp">
-      <Filter>Base</Filter>
-    </ClCompile>
     <ClCompile Include="ActionCommand\FileCommand.cpp">
       <Filter>ActionCommand</Filter>
-    </ClCompile>
-    <ClCompile Include="Base\XCAFTools.cpp">
-      <Filter>Base</Filter>
     </ClCompile>
     <ClCompile Include="IO\XStepRW.cpp">
       <Filter>IO</Filter>
@@ -100,6 +94,15 @@
     <ClCompile Include="ModelTreeWidget.cpp">
       <Filter>Form</Filter>
     </ClCompile>
+    <ClCompile Include="ControlPanel.cpp">
+      <Filter>Form</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\GeoManager.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\GeoShape.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Design\XDatumCS.h">
@@ -126,12 +129,6 @@
     <ClInclude Include="Base\Ptr.h">
       <Filter>Base</Filter>
     </ClInclude>
-    <ClInclude Include="Base\Signal.h">
-      <Filter>Base</Filter>
-    </ClInclude>
-    <ClInclude Include="Base\XCAFTools.h">
-      <Filter>Base</Filter>
-    </ClInclude>
     <ClInclude Include="IO\XStepRW.h">
       <Filter>IO</Filter>
     </ClInclude>
@@ -148,6 +145,12 @@
       <Filter>Base</Filter>
     </ClInclude>
     <ClInclude Include="IO\XCafRW.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\GeoManager.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\GeoShape.h">
       <Filter>Base</Filter>
     </ClInclude>
   </ItemGroup>
@@ -174,6 +177,9 @@
       <Filter>Form</Filter>
     </QtMoc>
     <QtMoc Include="ModelTreeWidget.h">
+      <Filter>Form</Filter>
+    </QtMoc>
+    <QtMoc Include="ControlPanel.h">
       <Filter>Form</Filter>
     </QtMoc>
   </ItemGroup>

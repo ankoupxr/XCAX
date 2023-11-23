@@ -1,11 +1,9 @@
 #include "ModelTreeWidget.h"
 
-ModelTreeWidget::ModelTreeWidget(QWidget *parent)
-	: QWidget(parent), m_ui(new Ui_ModelTreeWidgetClass)
+ModelTreeWidget::ModelTreeWidget(MainWindow* m) : m_mainWindow(m)
 {
-	m_ui->setupUi(this);
-	QObject::connect(m_ui->treeWidget,&QTreeWidget::itemSelectionChanged,this, 
-		&ModelTreeWidget::sendModelTreeItemSignalBuilder);
+	this->header()->setSectionResizeMode(QHeaderView::ResizeToContents);//根据内容自动调整大小
+	this->setSelectionMode(QAbstractItemView::ExtendedSelection);//设为多选
 }
 
 ModelTreeWidget::~ModelTreeWidget()
@@ -35,4 +33,9 @@ void ModelTreeWidget::sendModelTreeItemSignalBuilder()
 {
   auto selectedItem = m_ui->treeWidget->selectedItems().at(0);
   emit sendModelTreeItemSignal(selectedItem);
+}
+
+void ModelTreeWidget::updateModelTree() 
+{
+	
 }

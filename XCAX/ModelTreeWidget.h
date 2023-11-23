@@ -7,12 +7,14 @@
 #include <memory>
 #include <QTreeWidgetItem>
 
-class ModelTreeWidget : public QWidget
+class MainWindow;
+
+class ModelTreeWidget : public QTreeWidget
 {
 	Q_OBJECT
 
 public:
-	ModelTreeWidget(QWidget *parent = nullptr);
+	ModelTreeWidget(MainWindow* m);
 	~ModelTreeWidget();
 
 	using BuilderPtr = std::unique_ptr<ModelTreeWidget>;
@@ -31,9 +33,12 @@ public slots:
 	void recvNewFileSignal(const DocPtr& doc);
 	void sendModelTreeItemSignalBuilder();
 
+	void updateModelTree();
 
 private:
 	class Ui_ModelTreeWidgetClass* m_ui = nullptr;
 	DocPtr m_currentDocPtr;
 	AppPtr m_app;
+
+	MainWindow* m_mainWindow{ nullptr };
 };

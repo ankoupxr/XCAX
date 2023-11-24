@@ -9,20 +9,22 @@
 #include <TopoDS_Shape.hxx>
 #include <vtkPolyData.h>
 
-class GeoShape
+#include <Entity.h>
+
+class GeoShape : public Entity
 {
 public:
 	GeoShape();
 	~GeoShape();
 
-	void setIdentify(int id);
-
-	TopoDS_Shape* getShape(int index);
+	TopoDS_Shape* getShape();
 	void setShape(TopoDS_Shape* shape);
 private:
-	vtkPolyData* m_polyData;
-	TopoDS_Shape* m_Shape;//Ö÷Shape
+	vtkPolyData* m_polyData = nullptr;
+	TopoDS_Shape* m_Shape = nullptr;//Ö÷Shape
 	QList<GeoShape*> m_subShapeList;//×ÓShape
+
+	static int m_maxid;
 };
 
 

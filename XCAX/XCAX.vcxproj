@@ -100,6 +100,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Base\Entity.cpp" />
     <ClCompile Include="Base\GeoManager.cpp" />
     <ClCompile Include="Base\GeoShape.cpp" />
     <ClCompile Include="ControlPanel.cpp" />
@@ -139,6 +140,7 @@
     <QtMoc Include="Base\Container.h" />
     <ClInclude Include="Base\Document.h" />
     <ClInclude Include="Base\DocumentObject.h" />
+    <ClInclude Include="Base\Entity.h" />
     <ClInclude Include="Base\GeoManager.h" />
     <ClInclude Include="Base\GeoShape.h" />
     <ClInclude Include="Base\Ptr.h" />

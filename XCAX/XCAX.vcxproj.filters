@@ -103,6 +103,9 @@
     <ClCompile Include="Base\GeoShape.cpp">
       <Filter>Base</Filter>
     </ClCompile>
+    <ClCompile Include="Base\Entity.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Design\XDatumCS.h">
@@ -151,6 +154,9 @@
       <Filter>Base</Filter>
     </ClInclude>
     <ClInclude Include="Base\GeoShape.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\Entity.h">
       <Filter>Base</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,6 +1,6 @@
 #include "ModelTreeWidget.h"
 
-ModelTreeWidget::ModelTreeWidget(MainWindow* m) : m_mainWindow(m)
+ModelTreeWidget::ModelTreeWidget(MainWindow* m, QWidget* parent) 
 {
 	this->header()->setSectionResizeMode(QHeaderView::ResizeToContents);//根据内容自动调整大小
 	this->setSelectionMode(QAbstractItemView::ExtendedSelection);//设为多选
@@ -37,5 +37,25 @@ void ModelTreeWidget::sendModelTreeItemSignalBuilder()
 
 void ModelTreeWidget::updateModelTree() 
 {
-	
+	m_root->takeChildren();
+	removeItemWidget(m_root, 0);
+	delete m_root;
+	m_root = new QTreeWidgetItem(this, 1);
+	m_root->setText(0, tr("Geo"));
+	m_root->setIcon(0, QIcon(":/UI/icon/geo.png"));
+	this->addTopLevelItem(m_root);
+	m_root->setExpanded(true);
+
+	const int n = m_geoManager->GetGeoShapeListCount();
+	for (int i = 0; i < n; ++i)
+	{
+		GeoShape* geoshape = m_geoManager->GetShapeById(i);
+		QString name = geoshape->getName();
+		name += QString("(%1)").arg(geoshape->getIdentify());
+		Qt::CheckState isvisable = Qt::Unchecked;
+		QTreeWidgetItem* item = new QTreeWidgetItem(m_root, 2);
+		item->setCheckState(0, isvisable);
+		item->setText(0, name);
+		item->setIcon(0, QIcon(":/UI/icon/geo.png"));
+	}
 }

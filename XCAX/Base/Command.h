@@ -21,6 +21,7 @@ protected:
 	void SetAction(QAction* action);
 	DocPtr m_doc = nullptr;
 	AppPtr m_app = nullptr;
+	TopoDS_Shape* m_resultShape = nullptr;
 private:
 	QAction* m_action = nullptr;
 };

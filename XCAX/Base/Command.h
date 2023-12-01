@@ -16,6 +16,9 @@ public:
 	QAction* Action() const { return m_action; };
 	App* GetApp() const { return m_app.get(); };
 
+signals:
+	void Draw(TopoDS_Shape*);
+	void Remove(TopoDS_Shape*);
 
 protected:
 	void SetAction(QAction* action);

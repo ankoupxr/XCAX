@@ -1,5 +1,12 @@
 #include <DatumCommand.h>
 
+
+SketchCommand::SketchCommand(AppPtr app) : Command(app)
+{
+	connect(this, SIGNAL(Draw(TopoDS_Shape*)), m_app->GetMainWin(),
+		SIGNAL(Draw(TopoDS_Shape*)));
+}
+
 SketchPolylineCommand::SketchPolylineCommand(AppPtr app) :SketchCommand(app)
 {
 
@@ -29,5 +36,5 @@ void SketchPolylineCommand::Execute()
 
 	m_resultShape = new TopoDS_Shape;
 	*m_resultShape = result;
-
+	
 }

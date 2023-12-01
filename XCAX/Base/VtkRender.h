@@ -19,9 +19,18 @@
 #include <vtkAxesActor.h>
 #include <vtkOrientationMarkerWidget.h>
 #include <vtkProperty.h>
+#include <vtkInteractorStyleRubberBandPick.h>
+#include <vtkCoordinate.h>
 
-class QTVtkRender
+enum DrawMode
 {
+	None = -1,
+	Sketch
+};
+
+class QTVtkRender : public QObject, public vtkInteractorStyleRubberBandPick
+{
+	Q_OBJECT
 public:
 	QTVtkRender();
 	~QTVtkRender();
@@ -33,10 +42,22 @@ public:
 	QVTKOpenGLNativeWidget* GetInstance() const { return m_vtkwidget; };
 	void renderShape(TopoDS_Shape ts);
 
+signals:
+	void saveMousePoint(double* p);
+
+public slots:
+	void Draw(TopoDS_Shape*);
+	void Remove(TopoDS_Shape*);
+
+private:
+	virtual void OnLeftButtonDown() override;
+
 private:
 	vtkSmartPointer<vtkRenderer> m_renderer;
 	vtkSmartPointer<vtkRenderWindow> m_renderWindow;
 	QVTKOpenGLNativeWidget* m_vtkwidget;
 	vtkSmartPointer<vtkOrientationMarkerWidget> MarkerWidget;
+	DrawMode m_drawMode{ DrawMode::None };
+	vtkCoordinate* m_coordinate = nullptr;
 };
 

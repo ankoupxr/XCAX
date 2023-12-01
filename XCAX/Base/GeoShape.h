@@ -27,5 +27,4 @@ private:
 	static int m_maxid;
 };
 
-
 #endif // !GEOSHAPE_H

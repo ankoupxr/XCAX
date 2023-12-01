@@ -1,6 +1,6 @@
 #include "ModelTreeWidget.h"
 
-ModelTreeWidget::ModelTreeWidget(MainWindow* m, QWidget* parent) 
+ModelTreeWidget::ModelTreeWidget(MainWindow* m) 
 {
 	this->header()->setSectionResizeMode(QHeaderView::ResizeToContents);//根据内容自动调整大小
 	this->setSelectionMode(QAbstractItemView::ExtendedSelection);//设为多选

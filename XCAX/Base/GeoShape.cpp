@@ -1,5 +1,7 @@
 #include <GeoShape.h>
 
+int	GeoShape::m_maxid = 0;
+
 GeoShape::GeoShape()
 {
 	m_maxid++;

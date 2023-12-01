@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget* parent)
 	m_app = app->GetInstance();
 	m_cmdContainer.SetApp(m_app);
 
-	m_modeltree = new ModelTreeWidget();
+	m_modeltree = new ModelTreeWidget(this);
 	QVBoxLayout* layout = new QVBoxLayout();
 	layout->addWidget(m_modeltree);
 	m_modeltree->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);

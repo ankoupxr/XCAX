@@ -62,6 +62,43 @@ void QTVtkRender::renderShape(TopoDS_Shape ts)
     m_renderer->AddActor(actor); //在渲染器中加入vtk actor
 }
 
+void QTVtkRender::Draw(TopoDS_Shape* ts)
+{
+    IVtkOCC_Shape::Handle aShapeImpl = new IVtkOCC_Shape(*ts);
+    vtkSmartPointer<IVtkTools_ShapeDataSource> DS = vtkSmartPointer<IVtkTools_ShapeDataSource>::New();
+    DS->SetShape(aShapeImpl);
+    vtkSmartPointer<vtkPolyDataMapper> Mapper = vtkSmartPointer<vtkPolyDataMapper>::New();
+    Mapper->SetInputConnection(DS->GetOutputPort());
+    vtkSmartPointer<vtkActor> Actor = vtkSmartPointer<vtkActor>::New();
+    Actor->SetMapper(Mapper);
+    Actor->GetProperty()->SetColor(0, 0, 0);
+    Actor->GetProperty()->SetRepresentationToWireframe();
+    Actor->GetProperty()->SetLineWidth(3);
+    Actor->SetPickable(false);
+    m_renderer->AddActor(Actor);
+}
+
+void QTVtkRender::Remove(TopoDS_Shape* ts)
+{
+
+}
+
+void QTVtkRender::OnLeftButtonDown()
+{
+    vtkInteractorStyleRubberBandPick::OnLeftButtonDown();
+    int* pos = this->GetInteractor()->GetEventPosition();
+    switch (m_drawMode)
+    {
+        case DrawMode::Sketch:
+            m_coordinate->SetCoordinateSystemToDisplay();
+            m_coordinate->SetValue(pos[0], pos[1], 0);
+            double* d = m_coordinate->GetComputedWorldValue(m_renderer);
+            emit saveMousePoint(d);
+            break;
+    }
+}
+
+
 QTVtkRender::~QTVtkRender() 
 {
 

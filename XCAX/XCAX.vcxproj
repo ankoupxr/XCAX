@@ -100,10 +100,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ActionCommand\DatumCommand.cpp" />
     <ClCompile Include="Base\Entity.cpp" />
     <ClCompile Include="Base\GeoManager.cpp" />
     <ClCompile Include="Base\GeoShape.cpp" />
-    <ClCompile Include="ControlPanel.cpp" />
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="ModelTreeWidget.cpp" />
     <QtRcc Include="Resource.qrc" />
@@ -135,6 +135,7 @@
     <QtMoc Include="ActionCommand\FileCommand.h" />
     <QtMoc Include="ActionCommand\FeatureCommand.h" />
     <QtMoc Include="ActionCommand\ParamModelingCommand.h" />
+    <QtMoc Include="ActionCommand\DatumCommand.h" />
     <ClInclude Include="Base\App.h" />
     <QtMoc Include="Base\Command.h" />
     <QtMoc Include="Base\Container.h" />
@@ -145,9 +146,8 @@
     <ClInclude Include="Base\GeoShape.h" />
     <ClInclude Include="Base\Ptr.h" />
     <ClInclude Include="Base\TreeNode.h" />
-    <ClInclude Include="Base\VtkRender.h" />
+    <QtMoc Include="Base\VtkRender.h" />
     <QtMoc Include="cube_widget.h" />
-    <QtMoc Include="ControlPanel.h" />
     <ClInclude Include="Design\XDatumCS.h" />
     <ClInclude Include="Design\XDatumLine.h" />
     <ClInclude Include="Design\XDatumPlane.h" />

@@ -4,6 +4,15 @@ ModelTreeWidget::ModelTreeWidget(MainWindow* m)
 {
 	this->header()->setSectionResizeMode(QHeaderView::ResizeToContents);//根据内容自动调整大小
 	this->setSelectionMode(QAbstractItemView::ExtendedSelection);//设为多选
+
+	m_mainWindow = m;
+	this->setHeaderHidden(true);
+	m_root = new QTreeWidgetItem(this, 1);
+	m_root->setText(0,tr("Shape"));
+	m_root->setIcon(0, QIcon(":/images/view-front.svg"));
+	this->addTopLevelItem(m_root);
+	m_root->setExpanded(true);
+
 }
 
 ModelTreeWidget::~ModelTreeWidget()
@@ -42,7 +51,7 @@ void ModelTreeWidget::updateModelTree()
 	delete m_root;
 	m_root = new QTreeWidgetItem(this, 1);
 	m_root->setText(0, tr("Geo"));
-	m_root->setIcon(0, QIcon(":/UI/icon/geo.png"));
+	m_root->setIcon(0, QIcon(":/images/view-front.svg"));
 	this->addTopLevelItem(m_root);
 	m_root->setExpanded(true);
 
@@ -56,6 +65,6 @@ void ModelTreeWidget::updateModelTree()
 		QTreeWidgetItem* item = new QTreeWidgetItem(m_root, 2);
 		item->setCheckState(0, isvisable);
 		item->setText(0, name);
-		item->setIcon(0, QIcon(":/UI/icon/geo.png"));
+		item->setIcon(0, QIcon(":/images/view-front.svg"));
 	}
 }
